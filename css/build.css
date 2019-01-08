@@ -1,0 +1,610 @@
+.player-container {
+  margin: auto;
+}
+
+#player {
+  margin: auto;
+  /* width: 840px !important; */
+  /* height: 590px !important; */
+}
+
+.sidebar {
+  width: 1140px !important;
+}
+
+@media (max-width: 762px) {
+  #player {
+    width: 520px !important;
+    height: 390px !important;
+  }
+
+  .sidebar {
+    width: 520px !important;
+  }
+}
+
+@media (min-width: 762px) and (max-width: 1168px) {
+  #player {
+    width: 720px !important;
+    height: 490px !important;
+  }
+
+  .sidebar {
+    width: 720px !important;
+  }
+}
+
+@media (min-width: 1168px) and (max-width: 1440px) {
+  #player {
+    width: 840px !important;
+    height: 590px !important;
+  }
+
+  .sidebar {
+    width: 840px !important;
+  }
+}
+
+
+.sidebar {
+  /* width: 100% !important; */
+  margin: auto !important;
+  /* width: 1140px !important; */
+  height: 260px;
+  background-color: #7e7e7f;
+  font-family: Arial, sans-serif;
+  float: inherit !important;
+}
+
+.jw-media.jw-reset {
+  background: black;
+}
+
+@media screen and (max-width: 1080px) {
+  .sidebar {
+    /* width: 640px; */
+    margin-bottom: 20px;
+  }
+}
+
+.sidebar h3 {
+  padding: 20px;
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+  text-align: left;
+}
+
+
+.transcript-wrapper {
+  display: none;
+  /* overflow: auto; */
+}
+
+.transcript-wrapper.right-side {
+  display: inline-block;
+  margin-right: 160px;
+  max-height: 610px;
+  margin-bottom: 100px;
+}
+
+.tool-box {
+  padding: 0px 20px;
+}
+
+#search {
+  background: transparent;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  transition: all .3s;
+  height: 32px;
+  padding: 4px 11px;
+  display: inline-block;
+  margin-left: 10%;
+  width: 40%;
+  color: #d9d9d9;
+}
+
+.tool-box select {
+  border: 1px solid #d9d9d9;
+  /* background-color: rgba(255, 255, 255, .5); */
+  color: #d9d9d9;
+  background-color: transparent;
+  padding: 5px;
+  width: 40%;
+  border-radius: 4px;
+}
+
+.tool-box select option {
+  background-color: transparent !important;
+  border: 1px solid #e4e4e4;
+  color: #000;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.transcript {
+  padding: 0px 20px;
+  margin-bottom: 30px;
+  overflow: auto;
+  max-height: 610px;
+}
+
+.transcript::-webkit-scrollbar {
+  width: 1px;
+}
+
+.transcript::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.transcript::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.transcript p {
+  font-size: 15px;
+  overflow: hidden;
+  text-align: left;
+  color: #fff;
+  line-height: 20px;
+  margin-top: 0px;
+}
+
+.transcript span {
+  display: block;
+  padding: 4px 2px;
+  line-height: 24px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.transcript span.current {
+  background: #00f096;
+  color: #000;
+}
+
+.transcript span:hover {
+  color: #00f096;
+}
+
+.transcript span em {
+  font-style: normal;
+  background: #666;
+  color: #FFF;
+}
+
+.transcript span em.current {
+  background: #ff0046;
+}
+
+.transcript h4 {
+  margin: 25px 0 15px 0;
+  text-align: left;
+  color: #fff;
+  font-weight: bold;
+}
+
+.caption-copy {
+  max-width: 640px;
+  margin: 20px auto;
+  text-align: left;
+  padding: 10px;
+}
+
+.caption-copy div,
+.caption-copy ol,
+.caption-copy li {
+  text-align: left;
+  font-size: 20px;
+}
+
+.caption-copy div {
+  font-weight: 400;
+  margin: 15px 0;
+}
+
+.caption-copy ol {
+  margin-left: 15px;
+  margin-top: 20px;
+}
+
+.caption-copy li {
+  margin-bottom: 10px;
+}
+
+input[type=range][orient=vertical] {
+  writing-mode: bt-lr;
+  /* IE */
+  -webkit-appearance: slider-vertical;
+  /* WebKit */
+  width: 8px;
+  height: 175px;
+  padding: 0 5px;
+}
+
+#control-bar {
+  position: absolute;
+  z-index: 100;
+  /* bottom: 0; */
+  left: 160px;
+  right: 160px;
+  height: 58px;
+  margin: 0 10px;
+  background: url('http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/chrome.png') 0 0;
+}
+
+#controls-left {
+  left: 0;
+  margin-left: -10px;
+  background: url('http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/chrome.png') left -61px no-repeat;
+  position: absolute;
+  white-space: nowrap;
+  padding: 13px 12px 0;
+  height: 46px;
+}
+
+#controls-right {
+  right: 0;
+  margin-right: -10px;
+  background: url('http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/chrome.png') right -123px no-repeat;
+  position: absolute;
+  white-space: nowrap;
+  padding: 13px 12px 0;
+  height: 46px;
+}
+
+#controls-middle {
+  margin-left: 124px;
+  margin-right: 185px;
+  position: relative;
+}
+
+#control-bar button {
+  border-width: 0;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  color: black;
+}
+
+#controls-left>button,
+#controls-right>button,
+#controls-left>div,
+#controls-right>div {
+  float: left;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#playPauseButton,
+#playStopButton {
+  margin: 0;
+}
+
+#playPauseButton {
+  cursor: pointer;
+  background: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png") 0 -449px;
+}
+
+#playPauseButton.pause {
+  background-position: 0px -381px;
+}
+
+#playPauseButton.play {
+  background-position: 0px -449px;
+}
+
+#captionButton {
+  cursor: default;
+  background: url('http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png');
+  height: 60px;
+}
+
+#captionButton.active {
+  background-position: -128px -50px;
+  cursor: pointer;
+}
+
+#captionButton.inactive {
+  background-position: -96px -50px;
+}
+
+#full-screen {
+  cursor: pointer;
+  background: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png") 0 -743px;
+}
+
+#seek-bar {
+  margin-top: 21px;
+  height: 15px;
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+#seek-bar:focus {
+  outline: none;
+}
+
+#seek-bar::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #404040;
+  border-radius: 0px;
+  border: 0px solid #404040;
+}
+
+#seek-bar::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #CCCCCC;
+  border: 0px solid #ADADAD;
+  height: 9px;
+  width: 19px;
+  border-radius: 4px;
+  background: #CCCCCC;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4px;
+}
+
+#seek-bar::-moz-range-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #404040;
+  border-radius: 0px;
+  border: 0px solid #404040;
+}
+
+#seek-bar::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #CCCCCC;
+  border: 0px solid #ADADAD;
+  height: 9px;
+  width: 19px;
+  border-radius: 4px;
+  background: #CCCCCC;
+  cursor: pointer;
+}
+
+#seek-bar::-ms-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+#seek-bar::-ms-fill-lower {
+  border: 0px solid #404040;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #404040;
+}
+
+#seek-bar::-ms-fill-upper {
+  border: 0px solid #404040;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #404040;
+}
+
+#seek-bar::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 0px #CCCCCC;
+  border: 0px solid #ADADAD;
+  height: 9px;
+  width: 19px;
+  border-radius: 4px;
+  background: #CCCCCC;
+  cursor: pointer;
+}
+
+.end-time {
+  position: absolute;
+  right: 0px;
+  top: 35px;
+  color: white;
+}
+
+.current-time {
+  position: absolute;
+  left: 0px;
+  top: 35px;
+  color: white;
+}
+
+#mute {
+  cursor: pointer;
+  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+  background-color: transparent;
+  margin-right: auto;
+}
+
+#mute.active {
+  background-position: 0px -773px;
+}
+
+#mute.in-active {
+  background-position: 0px -805px;
+}
+
+#searchButton {
+  float: right !important;
+  cursor: pointer;
+  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+  background-color: transparent;
+  margin-right: auto;
+  background-position: 0px -710px;
+}
+
+#searchButton.active {
+  background-position: -30px -710px;
+}
+
+#volume-bar {
+  margin-top: 10px;
+  height: 15px;
+  -webkit-appearance: none;
+  width: calc(100% - 42px);
+  background: transparent;
+}
+
+#volume-bar:focus {
+  outline: none;
+}
+
+#volume-bar::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #404040;
+  border-radius: 0px;
+  border: 0px solid #404040;
+}
+
+#volume-bar::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #CCCCCC;
+  border: 0px solid #ADADAD;
+  height: 9px;
+  width: 9px;
+  border-radius: 9px;
+  background: #CCCCCC;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4px;
+}
+
+#volume-bar::-moz-range-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #404040;
+  border-radius: 0px;
+  border: 0px solid #404040;
+}
+
+#volume-bar::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #CCCCCC;
+  border: 0px solid #ADADAD;
+  height: 9px;
+  width: 9px;
+  border-radius: 9px;
+  background: #CCCCCC;
+  cursor: pointer;
+}
+
+#volume-bar::-ms-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+#volume-bar::-ms-fill-lower {
+  border: 0px solid #404040;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #404040;
+}
+
+#volume-bar::-ms-fill-upper {
+  border: 0px solid #404040;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #404040;
+}
+
+#volume-bar::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 0px #CCCCCC;
+  border: 0px solid #ADADAD;
+  height: 9px;
+  width: 9px;
+  border-radius: 9px;
+  background: #CCCCCC;
+  cursor: pointer;
+}
+
+/* For Video Transcription Display */
+#player.left-side {
+  margin-left: 160px;
+  margin-right: 50px;
+  display: inline-block;
+  width: 900px !important;
+}
+
+/* #transcript {
+  display: none;
+}
+
+#transcript.right-side {
+  display: inline-block;
+  margin-right: 160px;
+  max-height: 590px;
+  margin-bottom: 100px;
+} */
+
+
+/* .searchbox.right-side {
+  position: absolute;
+  top: 90px;
+  right: 160px;
+  bottom: 720px;
+} */
+
+
+.keyword_wrapper {
+  position: absolute;
+  /* transform: translateY(-100%); */
+  width: 100%;
+  background: transparent;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.keyword_wrapper .col-25 {
+  width: 25%;
+  display: inline-block;
+  /* background: #fff; */
+  color: white;
+}
+
+.keyword_wrapper .col-75 {
+  width: 75%;
+  display: inline-block;
+}
+
+.keyword_wrapper ul {
+  list-style: none;
+  font-size: 12px;
+  line-height: 24px;
+  margin: 0;
+  padding: 15px 20px;
+}
+
+.keyword_wrapper li {
+  float: left;
+  width: 25%;
+}
+
+.keyword_wrapper .link {
+  cursor: pointer;
+  color: #1890ff;
+}
+
+.svg-wrapper {
+  margin-top: -30px;
+}
+.svg {
+  display: inline-block;
+  position: absolute;
+  cursor: pointer;
+}

@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <link
+      rel="shortcut icon"
+      href="//developer.jwplayer.com/img/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <link rel="stylesheet" href="/css/build.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+
+  <body style="background-color: black;">
+    <script src="/js/IDzF9Zmk.js"></script>
+    <div class="container">
+      <div class="player-container">
+        <div id="player"></div>
+        <div class="transcript-wrapper">
+          <div id="transcript" class="transcript"></div>
+          <div class="tool-box">
+            <select onchange="searchKeyword()" id="keyword">
+              <option value="all" selected>My Keywords</option>
+              <option value="Tim">Tim</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Bachelor">Bachelor</option>
+              <option value="Master">Master</option>
+            </select>
+            <input
+              id="search"
+              type="search"
+              class="search"
+              placeholder="find words"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="control-bar">
+        <div id="controls-left">
+          <button id="playPauseButton" title="Play" class="pause"></button>
+          <button
+            id="captionButton"
+            title="Show Captioning"
+            class="active"
+          ></button>
+          <button id="full-screen" title="Full-Screen"></button>
+        </div>
+        <div id="controls-right">
+          <button id="mute" title="Mute" class="active"></button>
+          <input
+            type="range"
+            id="volume-bar"
+            min="0"
+            max="1"
+            step="0.001"
+            value="1"
+          />
+          <!-- <button id="searchButton" title="Search" class="active"></button> -->
+        </div>
+        <div id="controls-middle">
+          <input type="range" id="seek-bar" min="0" max="1" step="0.001" value="0"/>
+          <div class="svg-wrapper" id="svg-wrapper"></div>
+          <span class="end-time"></span>
+          <span class="current-time"></span>
+        </div>
+      </div>
+    </div>
+    <script src="/js/build.js"></script>
+  </body>
+</html>

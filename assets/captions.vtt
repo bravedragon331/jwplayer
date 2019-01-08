@@ -1,0 +1,5023 @@
+WEBVTT
+
+1
+00:00:00.810 --> 00:00:03.200
+Welcome everybody, welcome to our
+webinar
+
+2
+00:00:03.200 --> 00:00:08.650
+the State of HTML5 Video, today and
+beyond.
+
+3
+00:00:08.650 --> 00:00:14.880
+We're here today to talk about why Steve
+Jobs was wrong and Flash will prevail.
+
+4
+00:00:14.880 --> 00:00:16.140
+I'm kidding, of course.
+
+5
+00:00:16.140 --> 00:00:18.800
+We all know that HTML5 is here to stay.
+
+6
+00:00:20.420 --> 00:00:26.040
+Today we're gonna cover why HTML5 video,
+the current state of the video
+
+7
+00:00:26.040 --> 00:00:31.410
+tag, what browsers support HTML5 video
+playback
+
+8
+00:00:31.410 --> 00:00:34.490
+on mobile, the pitfalls and best
+practices.
+
+9
+00:00:34.490 --> 00:00:37.140
+We'll talk a little bit about video codecs
+
+10
+00:00:37.140 --> 00:00:41.240
+and next generation video codecs like VP9,
+H.265, etc.
+
+11
+00:00:41.240 --> 00:00:47.630
+We're gonna talk about the fullscreen API,
+how to offer a lean back experience.
+
+12
+00:00:47.630 --> 00:00:51.414
+We'll cover the new text tracks and WebVTT
+
+13
+00:00:51.414 --> 00:00:56.510
+which is the closed captioning to make
+video accessible and interactive.
+
+14
+00:00:56.510 --> 00:01:00.930
+And we're also gonna cover new streaming
+and encrypted media extensions.
+
+15
+00:01:00.930 --> 00:01:04.327
+And again we will leave 20 minutes or so
+for Q& at the end of this.
+
+16
+00:01:04.327 --> 00:01:04.827
+[K_O]
+
+17
+00:01:09.490 --> 00:01:14.360
+Really quick, 'm Mark Robertson. I run a
+site called ReelSEO.com.
+
+18
+00:01:14.360 --> 00:01:16.570
+For those of you that aren't aware, we're
+a site
+
+19
+00:01:16.570 --> 00:01:22.880
+that provides trends, tips, and research,
+about the online video industry.
+
+20
+00:01:23.930 --> 00:01:27.880
+I'm a trainer as well, YouTube
+certified trainer, so  train on
+
+21
+00:01:27.880 --> 00:01:33.130
+YouTube marketing and online video
+marketing and also work on video SEO.
+
+22
+00:01:34.650 --> 00:01:38.100
+For any of you that might be marketers we
+have a Reel video
+
+23
+00:01:38.100 --> 00:01:42.060
+summit in July in San Francisco and we'd
+love to have you join us.
+
+24
+00:01:43.280 --> 00:01:46.320
+I'm excited that we have, and 
+hope I don't say
+
+25
+00:01:46.320 --> 00:01:53.310
+his name wrong Jeroen Wijering, he's
+otherwise known as JW on his presentation.
+
+26
+00:01:53.310 --> 00:01:56.490
+For those of you that don't know JW, he's
+kind of a big deal.
+
+27
+00:01:56.490 --> 00:02:00.685
+He founded and created JW Player, which
+was really
+
+28
+00:02:00.685 --> 00:02:03.450
+the first Flash video player on the web,
+in 2005.
+
+29
+00:02:03.450 --> 00:02:09.120
+And, he just needed to get video up on the
+web, so he created the JW Player.
+
+30
+00:02:09.120 --> 00:02:13.520
+And, for those of you that don't know,
+YouTube actually used JW Player,
+
+31
+00:02:13.520 --> 00:02:18.260
+in it's first year of existence and payed
+a $15 license for that player.
+
+32
+00:02:18.260 --> 00:02:22.160
+So, long story short Jeroen is a big deal
+
+33
+00:02:22.160 --> 00:02:24.400
+in the online video space and, and really
+
+34
+00:02:24.400 --> 00:02:26.580
+is a pioneer, and we're thrilled to
+have
+
+35
+00:02:26.580 --> 00:02:30.030
+him here and to help talk about HTML5
+video.
+
+36
+00:02:30.030 --> 00:02:33.189
+Now JW Player is a great player, if
+
+37
+00:02:33.189 --> 00:02:37.960
+you're unfamiliar with it take a look at,
+at their solution.
+
+38
+00:02:37.960 --> 00:02:43.120
+They have a player and a solution
+that's live on roughly 2 million sites and
+
+39
+00:02:43.120 --> 00:02:49.370
+served 7 billion plays to over 750 million
+viewers in January.
+
+40
+00:02:49.370 --> 00:02:55.380
+They have a really large active community
+lots of help, lots of information there.
+
+41
+00:02:55.380 --> 00:03:01.310
+They're members of W3C, IAB and DASH
+and really
+
+42
+00:03:01.310 --> 00:03:03.340
+they're constantly moving forward to
+
+43
+00:03:03.340 --> 00:03:06.980
+increase reach through standardization and
+innovation.
+
+44
+00:03:06.980 --> 00:03:13.150
+They deployed HTML5 in an amazing
+way if you take a look at their player.
+
+45
+00:03:13.150 --> 00:03:15.990
+It works with Chromecast today, et
+cetera.
+
+46
+00:03:15.990 --> 00:03:19.540
+We're really excited to have Jeroen with
+us on this.
+
+47
+00:03:19.540 --> 00:03:24.076
+And he'll be talking about the video tag,
+fullscreen API
+
+48
+00:03:24.076 --> 00:03:27.899
+and VTT, and quite a few showing some
+neat demos.
+
+49
+00:03:28.940 --> 00:03:32.640
+Additionally we have Sam Dutton who's the
+developer advocate for Google Chrome.
+
+50
+00:03:32.640 --> 00:03:35.020
+He's also kind of a big deal.
+
+51
+00:03:35.020 --> 00:03:38.720
+He's very active as a thought leader
+in the HTML standards
+
+52
+00:03:38.720 --> 00:03:44.420
+space and in the mobile web and he's an
+author of WebRTC resources.
+
+53
+00:03:44.420 --> 00:03:47.998
+He often writes and presents about media
+APIs.
+
+54
+00:03:47.998 --> 00:03:52.530
+And you could see some of his work and he
+has some great examples of the mobile web
+
+55
+00:03:52.530 --> 00:03:59.160
+with HTML5, CSS, and JavaScript on his
+website at simple.info.
+
+56
+00:03:59.160 --> 00:04:02.810
+And so we're really excited to have him
+with us as well.
+
+57
+00:04:02.810 --> 00:04:05.000
+Rather than continue to babble on, I'm
+just gonna
+
+58
+00:04:05.000 --> 00:04:09.270
+move forward and pass the presentation
+onto JW, so that
+
+59
+00:04:09.270 --> 00:04:12.050
+he can get right into presenting and
+talking a
+
+60
+00:04:12.050 --> 00:04:16.080
+little bit about why we're here to talk
+about HTML5.
+
+61
+00:04:16.080 --> 00:04:19.460
+Where we are with HTML5 video today and
+show you some
+
+62
+00:04:19.460 --> 00:04:22.290
+of the unique possibilities and
+interesting
+
+63
+00:04:22.290 --> 00:04:24.480
+things moving forward in the future.
+
+64
+00:04:24.480 --> 00:04:27.684
+So, with that let me pass the presentation
+
+65
+00:04:27.684 --> 00:04:31.550
+to Jeroen, one moment please.
+
+66
+00:04:35.870 --> 00:04:36.980
+>> All right.
+
+67
+00:04:36.980 --> 00:04:39.500
+So as Mark said before we jump into
+
+68
+00:04:39.500 --> 00:04:43.755
+demos and real life examples.
+
+69
+00:04:43.755 --> 00:04:48.990
+Why HTML5 video?
+
+70
+00:04:48.990 --> 00:04:52.230
+Why is it important and why do 
+need this?
+
+71
+00:04:52.230 --> 00:04:56.336
+why is it so, like, prevalent today?
+
+72
+00:04:56.336 --> 00:05:00.120
+There's really two big trends
+that drives this.
+
+73
+00:05:00.120 --> 00:05:02.940
+The first one is the rise of video.
+
+74
+00:05:02.940 --> 00:05:06.370
+So if you look at this data it's from
+Cisco.
+
+75
+00:05:06.370 --> 00:05:10.822
+They do a lot of predicting of
+what internet
+
+76
+00:05:10.822 --> 00:05:15.280
+traffic is gonna look like in the next
+couple of years.
+
+77
+00:05:15.280 --> 00:05:17.864
+And as you can see from both the chart
+and
+
+78
+00:05:17.864 --> 00:05:21.940
+the quote at the bottom video is
+gonna be really big.
+
+79
+00:05:21.940 --> 00:05:25.740
+And the units on the left sides are
+Petabytes per month.
+
+80
+00:05:25.740 --> 00:05:28.110
+So we're talking really big numbers here.
+
+81
+00:05:28.110 --> 00:05:33.390
+And if frankly if we're not careful the
+video could break the internet.
+
+82
+00:05:33.390 --> 00:05:36.490
+And yeah, it's something that is usually
+reflected
+
+83
+00:05:36.490 --> 00:05:38.420
+in the news daily on a daily basis.
+
+84
+00:05:38.420 --> 00:05:40.660
+For example, the deal between Comcast and
+
+85
+00:05:40.660 --> 00:05:44.400
+Netflix where Netflix directly pays
+Comcast now.
+
+86
+00:05:44.400 --> 00:05:46.920
+Those kinds of things are really
+
+87
+00:05:46.920 --> 00:05:50.280
+the end result of this saturation of
+video.
+
+88
+00:05:50.280 --> 00:05:53.500
+Video has been like driving a lot of
+traffic and usage.
+
+89
+00:05:55.040 --> 00:05:57.840
+And then the other trend is mobile.
+
+90
+00:05:57.840 --> 00:06:03.670
+So back in the 2000s, late 1990s you had
+
+91
+00:06:03.670 --> 00:06:07.210
+HTML or you had video on your desktop
+computers.
+
+92
+00:06:07.210 --> 00:06:12.410
+And what you're now seeing is that mobile
+devices are also taking over.
+
+93
+00:06:13.560 --> 00:06:19.710
+Still the majority is on, the majority of
+web viewing is still on PC's.
+
+94
+00:06:19.710 --> 00:06:24.960
+But that could get, that could switch
+within the next one or two years.
+
+95
+00:06:24.960 --> 00:06:31.380
+And actually jump to smartphones, iPhone,
+Android based devices.
+
+96
+00:06:31.380 --> 00:06:37.680
+And then the tablets like iPad or the 
+Kindles or Android devices, Windows.
+
+97
+00:06:37.680 --> 00:06:41.140
+So there's a, there's lot of 
+growth in that area.
+
+98
+00:06:41.140 --> 00:06:44.940
+And these are really different types
+of computers that
+
+99
+00:06:44.940 --> 00:06:47.965
+all of a sudden now need to play video.
+
+100
+00:06:47.965 --> 00:06:51.525
+And I would say that, not in this chart,
+but on the
+
+101
+00:06:51.525 --> 00:06:54.996
+back of that is also the rise of settop
+boxes and
+
+102
+00:06:54.996 --> 00:07:00.247
+connected TV's, so Google just launched
+their Chromecast device,
+
+103
+00:07:00.247 --> 00:07:05.860
+the Apple TV has been doing very well for
+a couple of years.
+
+104
+00:07:05.860 --> 00:07:11.480
+And just two weeks ago, Amazon
+launched its set top box the FireTV.
+
+105
+00:07:11.480 --> 00:07:13.390
+So there is a lot of movement in that
+area.
+
+106
+00:07:13.390 --> 00:07:13.890
+And then
+
+107
+00:07:15.660 --> 00:07:21.360
+if you look at the technology 
+for playing back video on the
+
+108
+00:07:21.360 --> 00:07:26.550
+internet like HTML5 is, it's something
+that brings
+
+109
+00:07:26.550 --> 00:07:29.400
+that technology into the browser, into the
+device.
+
+110
+00:07:29.400 --> 00:07:35.790
+So, it really helps to make that
+video robust and performant.
+
+111
+00:07:35.790 --> 00:07:39.360
+That was of course, why that Steve
+Jobs
+
+112
+00:07:39.360 --> 00:07:42.530
+or Apple didn't wanna have Flash on the
+iPad.
+
+113
+00:07:45.100 --> 00:07:49.500
+It's also something that
+Android has adopted
+
+114
+00:07:49.500 --> 00:07:53.730
+and other mobile and set top
+platforms are adopting.
+
+115
+00:07:54.755 --> 00:07:59.390
+And another big, big item is that HTML5 is
+very easy.
+
+116
+00:07:59.390 --> 00:08:01.660
+There are millions, and millions, and
+millions
+
+117
+00:08:01.660 --> 00:08:04.840
+of web developers out there that known
+HTML,
+
+118
+00:08:04.840 --> 00:08:09.500
+CSS, JavaScript. All of the sudden they can
+work with video and that's a big deal.
+
+119
+00:08:09.500 --> 00:08:14.330
+And just on a broader scope
+this
+
+120
+00:08:14.330 --> 00:08:19.290
+HTML5 video tag, it makes video a first
+class citizen.
+
+121
+00:08:20.380 --> 00:08:24.170
+So, next to text and image, everybody can
+work with
+
+122
+00:08:24.170 --> 00:08:30.410
+video and everybody can present video
+on their websites.
+
+123
+00:08:30.410 --> 00:08:37.388
+The browsers can have video as part
+of their model, as part of their rendering
+
+124
+00:08:37.388 --> 00:08:39.870
+pipeline - not some separate black 
+box, and that
+
+125
+00:08:39.870 --> 00:08:44.540
+means accessibility for search engines,
+people with disabilities.
+
+126
+00:08:44.540 --> 00:08:48.990
+All kinds of exotic browsers that
+don't rely on
+
+127
+00:08:48.990 --> 00:08:52.430
+a vendor that needs to build a version of
+a plugin.
+
+128
+00:08:52.430 --> 00:08:58.250
+Now everybody can just adhere to the spec
+and then render the video themselves.
+
+129
+00:08:59.620 --> 00:09:04.305
+And that means that the broader
+ecosystem doesn't have to focus on just
+
+130
+00:09:04.305 --> 00:09:10.326
+"play it", but also on scaling,
+scalabilities, security.
+
+131
+00:09:10.326 --> 00:09:12.731
+interoperability, the things that are
+really
+
+132
+00:09:12.731 --> 00:09:15.340
+important as we saw from these Cisco
+charts.
+
+133
+00:09:18.210 --> 00:09:21.160
+Yeah and then if you look today,
+that promise of
+
+134
+00:09:21.160 --> 00:09:26.242
+HTML5 video is already broadly
+being delivered on.
+
+135
+00:09:26.242 --> 00:09:30.818
+On the desktop all the big browsers
+support HTML5 video, the
+
+136
+00:09:30.818 --> 00:09:35.570
+one caveat that's still out there is
+Internet Explorer 8. It still
+
+137
+00:09:35.570 --> 00:09:40.146
+got a couple of percentage points of
+market share still that,
+
+138
+00:09:40.146 --> 00:09:46.410
+won't do HTML5 yet, but that ones also
+fairly rapidly fading away.
+
+139
+00:09:46.410 --> 00:09:50.680
+And then on the mobile site both iOS and
+Android,
+
+140
+00:09:50.680 --> 00:09:55.320
+the two, like, big players out there,
+fully support HTML5 video.
+
+141
+00:09:55.320 --> 00:10:00.432
+OS, iPad, Android iPad, iPhone through
+Safari and then Android through both
+
+142
+00:10:00.432 --> 00:10:04.763
+their slightly older Android browser, and
+then in the newer versions of
+
+143
+00:10:04.763 --> 00:10:09.591
+Android the Chrome browser that, that's
+really like taking over that, that,
+
+144
+00:10:09.591 --> 00:10:13.750
+that role of theAndroid browser as the
+default browser inAndroid.
+
+145
+00:10:15.700 --> 00:10:19.630
+nternet xplorer on Windows Phone is also
+very
+
+146
+00:10:19.630 --> 00:10:24.870
+compliant, supports a lot of the HTML5
+functionalities.
+
+147
+00:10:24.870 --> 00:10:30.660
+One caveat  wanted to mention here is in
+certain countries ndia
+
+148
+00:10:30.660 --> 00:10:34.690
+is a great example, there is a lot of
+usage of proxy browsers,
+
+149
+00:10:34.690 --> 00:10:39.615
+where the browser is actually not
+rendering the page, but it's only showing
+
+150
+00:10:39.615 --> 00:10:43.450
+like more or less, an image, and the
+server is rendering the image.
+
+151
+00:10:43.450 --> 00:10:45.980
+Opera Mini is a great example of that.
+
+152
+00:10:45.980 --> 00:10:49.560
+Those are not HTML5 compatible at this
+point.
+
+153
+00:10:50.820 --> 00:10:55.920
+in, in like Western countries you will see
+next to no traffic from these browsers.
+
+154
+00:10:55.920 --> 00:10:59.610
+ut especially in sia, you will see a lot
+of traffic from those browsers.
+
+155
+00:10:59.610 --> 00:11:01.530
+And for them, you have to make sure that
+
+156
+00:11:01.530 --> 00:11:06.790
+in terms of fallback you, you handle them
+appropriately.
+
+157
+00:11:06.790 --> 00:11:11.220
+To really overall if we, if we look back
+
+158
+00:11:11.220 --> 00:11:13.990
+at, at what happens and how we got to
+HTML5.
+
+159
+00:11:13.990 --> 00:11:18.720
+So there were really three big stages of
+web video, of online video.
+
+160
+00:11:18.720 --> 00:11:22.530
+n the late 1990s early 2000s you had
+
+161
+00:11:22.530 --> 00:11:27.000
+the separate QuickTime Real, and Windows
+Media Player.
+
+162
+00:11:28.510 --> 00:11:31.020
+You have to install them separately,
+poster size
+
+163
+00:11:31.020 --> 00:11:36.723
+images separate from the webpage really
+not integrated video.
+
+164
+00:11:36.723 --> 00:11:42.820
+And then Flash, and later on Silverlight
+gets in the way, and they actually allowed
+
+165
+00:11:42.820 --> 00:11:45.300
+video to play in a webpage and look,
+
+166
+00:11:45.300 --> 00:11:47.660
+to a certain extent interact with other
+content.
+
+167
+00:11:48.790 --> 00:11:51.880
+Still hard to set up, specific to
+desktops.
+
+168
+00:11:51.880 --> 00:11:59.010
+And, so not very reliable for mobile and
+that's where we now act with HTML5.
+
+169
+00:11:59.010 --> 00:12:01.850
+Video is really part of the standard.
+
+170
+00:12:01.850 --> 00:12:03.140
+There is no plugin needed.
+
+171
+00:12:03.140 --> 00:12:04.240
+t works everywhere.
+
+172
+00:12:04.240 --> 00:12:05.650
+t's very easy to use.
+
+173
+00:12:05.650 --> 00:12:08.979
+[K_O].
+
+174
+00:12:09.990 --> 00:12:12.410
+And that all starts with the video tag.
+
+175
+00:12:12.410 --> 00:12:19.310
+So the video tag is the magic element that
+wraps everything HTML5 video.
+
+176
+00:12:19.310 --> 00:12:23.140
+And it's entry points to, to everything
+HTML5 video.
+
+177
+00:12:23.140 --> 00:12:27.370
+So here, here it is in liquid, in all it's
+glory with, with it's attributes.
+
+178
+00:12:29.120 --> 00:12:32.740
+There's links to the video file, there's
+links to a poster image
+
+179
+00:12:32.740 --> 00:12:36.966
+that's the image that you see before the
+video actually starts playing.
+
+180
+00:12:36.966 --> 00:12:42.170
+And that poster image you look at if you
+are a designer you wanna take a lot of
+
+181
+00:12:42.170 --> 00:12:45.700
+attention and making that really nice
+because that's like
+
+182
+00:12:45.700 --> 00:12:48.230
+the rope sign inviting people to play our
+video.
+
+183
+00:12:50.300 --> 00:12:53.590
+And then next to those there's the
+dimensions, how wide, how
+
+184
+00:12:53.590 --> 00:12:57.430
+high you want that video element to be and
+then some flax.
+
+185
+00:12:57.430 --> 00:12:59.200
+Controls, autoplay, loop, muted.
+
+186
+00:13:01.260 --> 00:13:03.320
+Most of which speak for themselves.
+
+187
+00:13:03.320 --> 00:13:07.410
+For the controls it's interesting to
+quickly take a look at a quick demo
+
+188
+00:13:08.470 --> 00:13:14.510
+because every browser by default will
+actually build in a a like a
+
+189
+00:13:14.510 --> 00:13:21.800
+fully functional control bar with a play
+button muting, and a full screen control.
+
+190
+00:13:21.800 --> 00:13:25.120
+So that's something that if you enable the
+controls, you'll see
+
+191
+00:13:25.120 --> 00:13:28.870
+and, look at this source code of this page
+you can see
+
+192
+00:13:28.870 --> 00:13:32.890
+like it's a very, it's just two lines,
+it's, it's a couple
+
+193
+00:13:32.890 --> 00:13:37.020
+of lines of code the video tag with the
+attributes we specified.
+
+194
+00:13:38.160 --> 00:13:41.900
+The very quick fallback for the browsers
+that do not support video.
+
+195
+00:13:41.900 --> 00:13:45.170
+So they see a message and then you close
+the video tag.
+
+196
+00:13:50.890 --> 00:13:55.718
+So let's, let's have a little bit more fun
+with video.
+
+197
+00:13:55.718 --> 00:13:59.440
+'m gonna show two quick demos.
+
+198
+00:13:59.440 --> 00:14:02.070
+One of them is about response of design
+
+199
+00:14:02.070 --> 00:14:04.219
+and then the other one is around
+background video.
+
+200
+00:14:06.630 --> 00:14:11.700
+So, here is the example of response of
+design with, with
+
+201
+00:14:11.700 --> 00:14:16.300
+the video tag it's actually super straight
+forward to make video responsive.
+
+202
+00:14:16.300 --> 00:14:19.640
+You set the width of video to a certain
+percentage.
+
+203
+00:14:19.640 --> 00:14:21.650
+And then you set the height of the video
+to
+
+204
+00:14:21.650 --> 00:14:26.192
+auto and then whenever you scale your
+page, you scale your
+
+205
+00:14:26.192 --> 00:14:30.450
+video elements, the element will know what
+the aspect ratio
+
+206
+00:14:30.450 --> 00:14:34.650
+of the video is and will automatically
+scale the height accordingly.
+
+207
+00:14:34.650 --> 00:14:38.448
+So, compared to existing, like Flash
+players and, and YouTube
+
+208
+00:14:38.448 --> 00:14:43.870
+embeds, that making an HTML5 video
+responsive is super straightforward.
+
+209
+00:14:43.870 --> 00:14:47.750
+[K_O]
+
+210
+00:14:47.750 --> 00:14:49.370
+And then here is another one.
+
+211
+00:14:49.370 --> 00:14:50.890
+Here's a background video.
+
+212
+00:14:52.270 --> 00:14:54.910
+Something you do wanna be very careful
+with,
+
+213
+00:14:54.910 --> 00:14:58.950
+in terms of application make sure that not
+all
+
+214
+00:14:58.950 --> 00:15:01.680
+your sites have background video, but,
+but, but only
+
+215
+00:15:01.680 --> 00:15:05.300
+in places where this makes sense the video
+like,
+
+216
+00:15:05.300 --> 00:15:10.410
+adds to the message ut, as you can see,
+
+217
+00:15:10.410 --> 00:15:13.490
+like the video is really performing in
+full screen,
+
+218
+00:15:13.490 --> 00:15:15.440
+it's part of the browser [...] and the
+browser
+
+219
+00:15:15.440 --> 00:15:17.370
+can take care of things and you can put
+
+220
+00:15:17.370 --> 00:15:20.025
+whatever you want on, on, on, on top of
+it.
+
+221
+00:15:21.070 --> 00:15:25.630
+specifically, when technically what we've
+done here is put
+
+222
+00:15:25.630 --> 00:15:29.050
+the video as a fixed element in the
+background.
+
+223
+00:15:29.050 --> 00:15:32.140
+Make sure that it scales to 100% of the
+width and height
+
+224
+00:15:32.140 --> 00:15:35.710
+of the page and 'll put everything else
+on top of that.
+
+225
+00:15:35.710 --> 00:15:37.730
+ow you see the little line image  don't
+
+226
+00:15:37.730 --> 00:15:42.170
+know if it comes across well on over the
+webinar.
+
+227
+00:15:42.170 --> 00:15:45.880
+ut that's a, that's a neat simple trick
+to kind of a
+
+228
+00:15:45.880 --> 00:15:49.150
+blurred effect that, that, that video is
+always a little bit pixelated.
+
+229
+00:15:49.150 --> 00:15:52.770
+t can give everybody a full H quality.
+
+230
+00:15:52.770 --> 00:15:56.130
+So, as you put this little like scan line
+background
+
+231
+00:15:56.130 --> 00:15:59.491
+image on top of it, and it looks much more
+crisp.
+
+232
+00:15:59.491 --> 00:16:02.962
+[SO].
+
+233
+00:16:02.962 --> 00:16:09.180
+ow these two items we just, these two
+demos
+
+234
+00:16:09.180 --> 00:16:13.050
+we just changed the properties of the
+video tag themselves.
+
+235
+00:16:13.050 --> 00:16:18.100
+ut beyond that there is really a ton of
+things you can do because everything just
+
+236
+00:16:18.100 --> 00:16:24.010
+is part of the video playback can be
+scripted against.
+
+237
+00:16:24.010 --> 00:16:27.130
+So you can listen to the network, the
+buffer state,
+
+238
+00:16:27.130 --> 00:16:30.480
+is the video loaded, how much of the video
+is loaded.
+
+239
+00:16:30.480 --> 00:16:33.600
+You can listen to queuing and, and, and,
+and loading Ps.
+
+240
+00:16:33.600 --> 00:16:36.450
+So you can actually build playlist
+functionality.
+
+241
+00:16:36.450 --> 00:16:40.450
+And then whenever video  is done, load
+video  into the player.
+
+242
+00:16:41.720 --> 00:16:45.870
+You can have playback stay controls, or if
+the video is pausing, you can
+
+243
+00:16:45.870 --> 00:16:49.610
+do certain things under [...] and if
+the video plays again, you can take away
+
+244
+00:16:49.610 --> 00:16:54.060
+those items again you can seek, you can
+trigger seek, you can listen to seeks,
+
+245
+00:16:54.060 --> 00:16:58.060
+you can change the volume, and you can
+listen that the metadata of the video.
+
+246
+00:16:58.060 --> 00:17:01.300
+So, how large is the video, how long is
+the video?
+
+247
+00:17:01.300 --> 00:17:06.450
+ very quick example is the, this one
+where
+
+248
+00:17:06.450 --> 00:17:09.520
+we're actually changing the playback rate
+of the video.
+
+249
+00:17:09.520 --> 00:17:13.450
+So as you see here the video is playing at
+normal speed.
+
+250
+00:17:13.450 --> 00:17:17.070
+And  can speed that up and make the video
+play like
+
+251
+00:17:17.070 --> 00:17:21.190
+four times it's normal speed which is
+great, for, for example, for seeking.
+
+252
+00:17:22.260 --> 00:17:25.110
+ut  can also slow that down.
+
+253
+00:17:25.110 --> 00:17:26.878
+So death one is great for sports
+
+254
+00:17:26.878 --> 00:17:30.686
+for replays that's something that's,
+that's really straight
+
+255
+00:17:30.686 --> 00:17:34.749
+forward a couple of lines of code and you
+can do that in every browser.
+
+256
+00:17:34.749 --> 00:17:39.670
+[SO].
+
+257
+00:17:39.670 --> 00:17:43.452
+We talked a little bit about the custom
+controls there every browser
+
+258
+00:17:43.452 --> 00:17:46.379
+has it's own controls as you can see in
+this image here.
+
+259
+00:17:47.820 --> 00:17:50.900
+The great thing about the scripting P is
+that you
+
+260
+00:17:50.900 --> 00:17:55.170
+can build your own controls, instead of
+the built in ones.
+
+261
+00:17:55.170 --> 00:17:59.103
+So 'll show a few examples, of what we've
+done with JW Player.
+
+262
+00:18:00.930 --> 00:18:05.220
+So here you can see that we've added a lot
+of controls on top of the video player.
+
+263
+00:18:06.910 --> 00:18:12.910
+And not only Mark made her own versions of
+built in controls, but also added controls
+
+264
+00:18:12.910 --> 00:18:19.030
+such as video quality menu or a, a sharing
+menu or a playlist on the side.
+
+265
+00:18:19.030 --> 00:18:24.010
+This is something that with some
+JavaScript, some CSS you can do
+
+266
+00:18:24.010 --> 00:18:28.551
+it yourselves as well, and every other
+video player framework out there.
+
+267
+00:18:28.551 --> 00:18:32.790
+ext to generic player, be it FlowPlayer,
+or VideoJS,
+
+268
+00:18:32.790 --> 00:18:35.550
+or others, they will do the same as well.
+
+269
+00:18:35.550 --> 00:18:39.580
+So that way, you can use the scripting
+P, some styling
+
+270
+00:18:39.580 --> 00:18:45.030
+to actually have that, have those controls
+consistent across all browsers.
+
+271
+00:18:45.030 --> 00:18:47.606
+Would also have those controls very
+reflective of
+
+272
+00:18:47.606 --> 00:18:50.111
+your brand name and your, your website
+messaging.
+
+273
+00:18:50.111 --> 00:18:52.573
+[K_O].
+
+274
+00:18:52.573 --> 00:19:02.039
+And then finally be-before, before  hand
+it over to Sam.
+
+275
+00:19:03.290 --> 00:19:08.250
+Wanted to point out a few gotchas on the
+mobile side because, everything
+
+276
+00:19:08.250 --> 00:19:13.210
+works, almost everything works the same as
+mobile but, there are a few caveats.
+
+277
+00:19:13.210 --> 00:19:15.730
+The first one is that the volume is
+controlled by
+
+278
+00:19:15.730 --> 00:19:18.960
+the built in buttons in your phone or in
+your tablet.
+
+279
+00:19:18.960 --> 00:19:22.460
+So, you can not programmatically control a
+video's volume.
+
+280
+00:19:23.880 --> 00:19:29.970
+ slightly bigger deal is that there is no
+autoplay support because
+
+281
+00:19:29.970 --> 00:19:34.960
+both battery and bandwidth are precious
+resources on mobile devices.
+
+282
+00:19:34.960 --> 00:19:41.280
+So all browser vendors both pple and
+Google and Microsoft have opted to
+
+283
+00:19:41.280 --> 00:19:47.310
+not support that autoplay attribute to, to
+save these battery and bandwidth issues.
+
+284
+00:19:47.310 --> 00:19:49.357
+The same goes for preloading off your
+video.
+
+285
+00:19:49.357 --> 00:19:52.597
+So if you want to, if you hit the play at
+that
+
+286
+00:19:52.597 --> 00:19:57.729
+point on a mobile device the, the device
+will fetch the video.
+
+287
+00:19:57.729 --> 00:20:01.235
+And it will not pre-fetch that video
+anticipating that play.
+
+288
+00:20:01.235 --> 00:20:02.917
+So you always have a little bit more
+
+289
+00:20:02.917 --> 00:20:05.760
+buffering, before the video starts on
+mobile devices.
+
+290
+00:20:07.800 --> 00:20:13.860
+And then the last caveat is really for, is
+for, iPhone only.
+
+291
+00:20:13.860 --> 00:20:17.380
+On iPhone, the video always plays in full
+screen.
+
+292
+00:20:17.380 --> 00:20:20.570
+So there is no way the iPhone put that
+video inside that
+
+293
+00:20:20.570 --> 00:20:25.810
+web page with white text, or imagery, or
+interactive content around that.
+
+294
+00:20:25.810 --> 00:20:30.220
+That's only iPhone note, on both iPad and
+any android device.
+
+295
+00:20:30.220 --> 00:20:33.290
+Android phones, android tablets, you won't
+have that issue.
+
+296
+00:20:37.360 --> 00:20:38.746
+That's it.
+
+297
+00:20:38.746 --> 00:20:43.332
+Let me hand it over to Sam, to actually
+talk about the new codex.
+
+298
+00:20:43.332 --> 00:20:47.550
+>> Thanks Jeroen, beautiful stuff.
+
+299
+00:20:47.550 --> 00:20:48.590
+Amazing stuff.
+
+300
+00:20:50.150 --> 00:20:52.550
+Let me just make sure 've got control
+here.
+
+301
+00:20:54.080 --> 00:20:54.580
+Okay.
+
+302
+00:20:55.880 --> 00:20:58.670
+I'm going back to the actual notes.
+
+303
+00:21:00.210 --> 00:21:00.930
+So yeah.
+
+304
+00:21:00.930 --> 00:21:02.130
+Beautiful stuff there from Jeroen.
+
+305
+00:21:02.130 --> 00:21:06.350
+So  wanted to  wanted to talk a bit
+about the state of codecs.
+
+306
+00:21:06.350 --> 00:21:09.120
+Because you know, this is the technology
+at
+
+307
+00:21:09.120 --> 00:21:12.210
+the heart of online video, and, and
+because.
+
+308
+00:21:12.210 --> 00:21:15.140
+For the first time, we're entering an age
+where Codex have
+
+309
+00:21:15.140 --> 00:21:18.530
+been designed with the web in mind, in
+particular the mobile web.
+
+310
+00:21:19.610 --> 00:21:22.460
+Now the good news is that you only need
+two
+
+311
+00:21:22.460 --> 00:21:27.378
+video formats, that's WebM and MP4, to
+cover all modern browser.
+
+312
+00:21:27.378 --> 00:21:30.600
+So, that's 85% of all the browsers that
+
+313
+00:21:30.600 --> 00:21:33.430
+support the video element, on mobile and
+desktop now.
+
+314
+00:21:35.320 --> 00:21:40.040
+MP4 and WebM these are tiny formats, you
+can think of them, a little bit,
+
+315
+00:21:40.040 --> 00:21:41.540
+maybe like a zip file or something
+
+316
+00:21:41.540 --> 00:21:45.020
+like that, that bungles together audio and
+video.
+
+317
+00:21:45.020 --> 00:21:53.110
+Most currently MP4, stores audio using C
+compressions, and video using HT64.
+
+318
+00:21:53.110 --> 00:21:59.350
+WebM uses VP8 and Vorbis, or more
+recently, VP9 and, [...] support.
+
+319
+00:22:01.160 --> 00:22:04.960
+Now, the source element shown in the
+example on screen
+
+320
+00:22:04.960 --> 00:22:08.410
+here, allows you to list format by order
+of preference.
+
+321
+00:22:08.410 --> 00:22:11.920
+And for the browser, the select format it
+supports.
+
+322
+00:22:11.920 --> 00:22:16.100
+With no scripting, and no server side
+capability checking.
+
+323
+00:22:16.100 --> 00:22:18.820
+You could add a type attribute to enable
+the browser to choose a
+
+324
+00:22:18.820 --> 00:22:23.990
+format, without having to download some
+video checks, kind of sniff the format.
+
+325
+00:22:23.990 --> 00:22:28.540
+so, you know, just one request can be made
+to actually start playing content.
+
+326
+00:22:28.540 --> 00:22:31.830
+This is especially important on mobile,
+where every request counts.
+
+327
+00:22:33.060 --> 00:22:35.250
+Any element can be added as a fall back,
+
+328
+00:22:35.250 --> 00:22:37.250
+you can see there 've got a, a paragraph
+element.
+
+329
+00:22:37.250 --> 00:22:42.300
+Just, you can have something nicer than
+that, an image, just
+
+330
+00:22:42.300 --> 00:22:46.310
+a great fall back for platforms that don't
+support the video element.
+
+331
+00:22:47.320 --> 00:22:48.760
+Something that.
+
+332
+00:22:48.760 --> 00:22:50.690
+People say that its lights.
+
+333
+00:22:50.690 --> 00:22:55.000
+Now, if you want to know the actual source
+chosen by the browser
+
+334
+00:22:55.000 --> 00:22:59.160
+for the video, you can use the current
+source property of the video.
+
+335
+00:22:59.160 --> 00:23:01.090
+That returns the actual value chosen.
+
+336
+00:23:01.090 --> 00:23:04.360
+Lets look at lets just go over to an
+example here.
+
+337
+00:23:04.360 --> 00:23:07.120
+So if  go to this page.
+
+338
+00:23:08.310 --> 00:23:14.190
+You can see that 've got, the Chrome dot
+web M file chosen.
+
+339
+00:23:14.190 --> 00:23:19.180
+Now, if  go, that's in Chrome, if  go
+over to Safari, you can see here
+
+340
+00:23:19.180 --> 00:23:23.050
+that 've got Chrome dot MP4 
+and that's
+
+341
+00:23:23.050 --> 00:23:27.770
+just done automatically using the the
+current source attribute.
+
+342
+00:23:27.770 --> 00:23:32.570
+Now if you wanna find out what codecs are
+supported by a
+
+343
+00:23:32.570 --> 00:23:36.830
+video element by browser, you can use the
+can play type method.
+
+344
+00:23:36.830 --> 00:23:39.380
+'ve got an example here, which is running
+in.
+
+345
+00:23:39.380 --> 00:23:42.600
+Run and you can see some examples there.
+
+346
+00:23:42.600 --> 00:23:44.570
+So returning an empty string for formats
+
+347
+00:23:44.570 --> 00:23:49.150
+that aren't supported essentially formats
+that are
+
+348
+00:23:49.150 --> 00:23:52.500
+probably supported with some caveats get
+returned
+
+349
+00:23:52.500 --> 00:23:56.480
+probably and where its maybe its returning
+maybe.
+
+350
+00:23:56.480 --> 00:24:01.290
+So, slightly crazy syntax but a really
+easy way to work out what support.
+
+351
+00:24:04.060 --> 00:24:06.100
+So, let's go back to represent.
+
+352
+00:24:07.780 --> 00:24:14.600
+And yeah,  wanted to talk a little bit,
+about, VP9 and HVC codecs.
+
+353
+00:24:14.600 --> 00:24:19.740
+These, the, the kind of next generation of
+codecs, which
+
+354
+00:24:19.740 --> 00:24:24.960
+gives, roundabout double the data
+compression of VP8 or H264 or.
+
+355
+00:24:24.960 --> 00:24:29.520
+Looking at it the other way, twice the
+quality, the same, same bit rate.
+
+356
+00:24:29.520 --> 00:24:32.200
+ow VP9 is open and royalty free.
+
+357
+00:24:32.200 --> 00:24:34.740
+You can see VP9 in action on YouTube.
+
+358
+00:24:34.740 --> 00:24:40.690
+It's now used,  believe, in over 40% of,
+YouTube HTML5 playback.
+
+359
+00:24:40.690 --> 00:24:45.730
+So, over 40% of YouTube HTML5 playbacks
+are encoded with VP9.
+
+360
+00:24:47.140 --> 00:24:52.970
+So the hardware support for HVC and VP
+nine will allow streaming of doing things
+
+361
+00:24:52.970 --> 00:24:55.450
+like streaming  guess with ultra H
+content
+
+362
+00:24:55.450 --> 00:24:58.820
+directly to computers, and TVs, and mobile
+devices.
+
+363
+00:24:58.820 --> 00:25:01.920
+And crucially reducing processing cost and
+you know
+
+364
+00:25:01.920 --> 00:25:06.750
+particularly when we're considering mobile
+devices, power consumption.
+
+365
+00:25:06.750 --> 00:25:10.880
+So modern codecs are looking really
+healthy.
+
+366
+00:25:10.880 --> 00:25:12.670
+I think you know, someone told me a couple
+of days
+
+367
+00:25:12.670 --> 00:25:15.120
+ago,  think real world example of this
+they were in a
+
+368
+00:25:15.120 --> 00:25:20.710
+hotel room with 1 Megabit wi-fi and you
+know they could stream
+
+369
+00:25:20.710 --> 00:25:25.800
+720p video whereas older codecs, they
+would have struggled with 480p.
+
+370
+00:25:25.800 --> 00:25:26.910
+So great news there.
+
+371
+00:25:27.980 --> 00:25:30.406
+Just a quick mention of, of the daala
+codec.
+
+372
+00:25:30.406 --> 00:25:32.593
+Now this is an interesting project.
+
+373
+00:25:32.593 --> 00:25:35.100
+From the Xiph.Org foundation.
+
+374
+00:25:35.100 --> 00:25:37.940
+It's patent free uses a radically
+different
+
+375
+00:25:37.940 --> 00:25:41.342
+technique from other codecs, to avoid
+blockiness.
+
+376
+00:25:41.342 --> 00:25:43.300
+Something called a left transform.
+
+377
+00:25:44.496 --> 00:25:48.770
+the, the founder of Xiph, very smart guy,
+Monte Montgomery.
+
+378
+00:25:48.770 --> 00:25:53.040
+Has stated that the goal of daala is to go
+a generation beyond VP9 and HVC.
+
+379
+00:25:53.040 --> 00:25:57.850
+So I'm interested to see where that
+project goes.
+
+380
+00:25:57.850 --> 00:26:00.370
+Speaking of which, f you wanna learn more
+about the digital video,
+
+381
+00:26:00.370 --> 00:26:02.960
+I strongly recommend Monty Montgomery's,
+highly
+
+382
+00:26:02.960 --> 00:26:06.750
+entertaining digital video primer for
+geeks.
+
+383
+00:26:06.750 --> 00:26:07.950
+You can see it there.
+
+384
+00:26:07.950 --> 00:26:09.900
+There's a link on the screen,  think.
+
+385
+00:26:09.900 --> 00:26:10.660
+If not, we'll add one.
+
+386
+00:26:12.640 --> 00:26:18.970
+so,  guess, just for a taste, maybe, of
+how far we've come with Codecs.
+
+387
+00:26:18.970 --> 00:26:23.100
+I want to just show kind of, somewhat,
+experimental demo, here.
+
+388
+00:26:24.470 --> 00:26:28.660
+If we have a look now, you can see on
+screen here.
+
+389
+00:26:28.660 --> 00:26:33.840
+What appear to be, a background with two
+elements, and you
+
+390
+00:26:33.840 --> 00:26:37.650
+have a look each of these elements is
+actually a video.
+
+391
+00:26:38.860 --> 00:26:42.290
+And you can see that, 'm able to
+
+392
+00:26:42.290 --> 00:26:45.020
+do element-like stuff cuz, they're
+elements.
+
+393
+00:26:45.020 --> 00:26:47.890
+You know,  can do the animations with
+CMS.
+
+394
+00:26:47.890 --> 00:26:51.060
+I can do, you know, filters and so on.
+
+395
+00:26:51.060 --> 00:26:53.770
+And what's great is, that these videos
+have
+
+396
+00:26:53.770 --> 00:26:57.000
+been encoded in Web  with alpha
+transparency information.
+
+397
+00:26:57.000 --> 00:27:03.200
+So, slightly bizarre but you know,  can
+image a lot of amazing use cases for that.
+
+398
+00:27:03.200 --> 00:27:11.350
+And we can even get background as a video
+and have videos playing over videos.
+
+399
+00:27:11.350 --> 00:27:13.520
+So great stuff there.
+
+400
+00:27:13.520 --> 00:27:17.945
+I think the future looks really bright for
+modern codecs.
+
+401
+00:27:21.060 --> 00:27:23.490
+ little bit of a leap over now, to the to
+
+402
+00:27:23.490 --> 00:27:27.290
+a little bit of discussion that is crucial
+to online video.
+
+403
+00:27:27.290 --> 00:27:29.830
+Particularly thinking again about eyeball
+devices.
+
+404
+00:27:30.830 --> 00:27:31.960
+The fullscreen API.
+
+405
+00:27:31.960 --> 00:27:37.830
+Now, of course on Safari on an iPhone,
+video elements are displayed
+
+406
+00:27:37.830 --> 00:27:43.560
+inline on the page, but when you tap the
+element, video plays back full screen.
+
+407
+00:27:44.870 --> 00:27:49.240
+likewise, if we look at if we look at
+Android.
+
+408
+00:27:50.560 --> 00:27:52.360
+sorry, going past a bit.
+
+409
+00:27:52.360 --> 00:27:55.030
+You can see that when we call playback on
+
+410
+00:27:55.030 --> 00:27:58.450
+the video element, it simply plays back
+within the screen.
+
+411
+00:27:59.450 --> 00:28:04.390
+And you know, we can use the, the full
+screen icon there.
+
+412
+00:28:04.390 --> 00:28:08.300
+Or we can use the full screen API as long
+as we're going with the show.
+
+413
+00:28:08.300 --> 00:28:09.180
+If we look at.
+
+414
+00:28:10.380 --> 00:28:12.280
+Looking at iPad there.
+
+415
+00:28:12.280 --> 00:28:13.200
+Safari on iPad.
+
+416
+00:28:13.200 --> 00:28:15.260
+You can see, again, the video plays it
+long.
+
+417
+00:28:15.260 --> 00:28:19.700
+And you can see in this example that, you
+know, this can lead to problems.
+
+418
+00:28:19.700 --> 00:28:20.010
+You know?
+
+419
+00:28:20.010 --> 00:28:24.560
+Setting, that width 100% with CSS may
+have, may have helped out here.
+
+420
+00:28:24.560 --> 00:28:25.200
+So.
+
+421
+00:28:25.200 --> 00:28:29.530
+ mean all in all video, on the multi
+device web that we're coming to.
+
+422
+00:28:29.530 --> 00:28:32.710
+With, you know, wearable's and big
+screens,
+
+423
+00:28:32.710 --> 00:28:35.300
+small screens, TV devices all kinds of
+stuff.
+
+424
+00:28:35.300 --> 00:28:38.490
+It's really calling for a, a much, much
+more flexible approach to web
+
+425
+00:28:38.490 --> 00:28:43.710
+design than we'd gotten used to in in the
+traditional web browser scenarios.
+
+426
+00:28:45.560 --> 00:28:51.370
+So, for platforms that do not force full
+screen video playback, a better
+
+427
+00:28:51.370 --> 00:28:56.910
+alternative may be to use thumbnails and
+go full screen for playback.
+
+428
+00:28:58.200 --> 00:29:02.740
+Now the full screen API is widely
+supported, you can see from the,
+
+429
+00:29:02.740 --> 00:29:06.440
+from the link they have a look at the
+devices that support that.
+
+430
+00:29:06.440 --> 00:29:10.393
+It's a, it's a really rich API, that's it
+provides scripting
+
+431
+00:29:10.393 --> 00:29:15.250
+and events, properties, and even CSS to
+control full screening of content.
+
+432
+00:29:15.250 --> 00:29:18.400
+So any element including the video
+elements, or you can
+
+433
+00:29:18.400 --> 00:29:22.930
+even full screen an entire page, the, the
+actual document.
+
+434
+00:29:22.930 --> 00:29:27.690
+ow, on devices with smaller screens, you
+may wanna consider using thumbnail
+
+435
+00:29:27.690 --> 00:29:33.150
+images, as placeholders for video, as
+shown in, in the example here.
+
+436
+00:29:33.150 --> 00:29:37.000
+When you tap on a thumbnail image the
+thumb nail is replaced by a
+
+437
+00:29:37.000 --> 00:29:41.830
+full screen video element that makes use
+of, of whatever screen area is available.
+
+438
+00:29:41.830 --> 00:29:43.520
+let, let's see that in action.
+
+439
+00:29:43.520 --> 00:29:48.680
+Unfortunately ,  can't show you that on
+a phone here, but  can show it
+
+440
+00:29:48.680 --> 00:29:53.860
+to you on my on my laptop.
+
+441
+00:29:53.860 --> 00:29:56.530
+So, if we press play now, we so 've
+tapped on the element there.
+
+442
+00:29:56.530 --> 00:29:57.930
+t's full screen, the video.
+
+443
+00:29:57.930 --> 00:29:58.280
+[SO].
+
+444
+00:29:58.280 --> 00:30:05.720
+And then  can go back to that, and then
+go back to the the page there.
+
+445
+00:30:05.720 --> 00:30:07.010
+Tap on the other one now.
+
+446
+00:30:07.010 --> 00:30:08.330
+And we're playing the other video.
+
+447
+00:30:08.330 --> 00:30:10.810
+The web is always changing.
+
+448
+00:30:10.810 --> 00:30:12.080
+and there we go.
+
+449
+00:30:12.080 --> 00:30:16.200
+So yeah, just a handy way of, of using the
+
+450
+00:30:16.200 --> 00:30:20.890
+full screen P to full screen videos
+from, from thumbnails.
+
+451
+00:30:24.110 --> 00:30:26.860
+So, moving on from there  just wanted to
+talk a
+
+452
+00:30:26.860 --> 00:30:34.050
+little bit about how we actually deliver
+video because this is,becoming
+
+453
+00:30:34.050 --> 00:30:39.020
+increasingly increasingly a important
+problem to solve in the, in the age of
+
+454
+00:30:39.020 --> 00:30:44.830
+devices on a variety of connectivity
+scenarios and usage scenarios.
+
+455
+00:30:44.830 --> 00:30:48.910
+So, what's been in the pipeline for some
+years now, and
+
+456
+00:30:48.910 --> 00:30:52.680
+it's several technologies developed to
+handle
+
+457
+00:30:52.680 --> 00:30:55.170
+it, it's something called adaptive
+streaming.
+
+458
+00:30:55.170 --> 00:30:59.470
+ssentially this is an alternative to
+simply downloading a video file.
+
+459
+00:30:59.470 --> 00:31:02.790
+Which is kind of the, the examples that
+'ve been showing so far.
+
+460
+00:31:04.170 --> 00:31:06.630
+So adaptive streaming works like this.
+
+461
+00:31:06.630 --> 00:31:10.620
+The, the server doesn't sent the entire
+video to the client, but
+
+462
+00:31:10.620 --> 00:31:15.100
+in fact only small pieces of video that
+last a few seconds each.
+
+463
+00:31:15.100 --> 00:31:20.460
+The client then joins the fragments
+together, into a single video stream.
+
+464
+00:31:20.460 --> 00:31:25.750
+Often there, yeah, this could be combined
+with, multiple, qualities of video.
+
+465
+00:31:25.750 --> 00:31:28.810
+So bit rates, which means that the client
+
+466
+00:31:28.810 --> 00:31:33.720
+can fetch fragments that fit its bandwidth
+conditions.
+
+467
+00:31:33.720 --> 00:31:38.550
+And, obviously, this gives us the ability
+to respond dynamically.
+
+468
+00:31:38.550 --> 00:31:44.080
+To fluctuations in connectivity and all
+kinds of variability and unpredictability.
+
+469
+00:31:44.080 --> 00:31:48.250
+So you can see that from the, the diagram
+on the right there.
+
+470
+00:31:48.250 --> 00:31:52.670
+So, there are huge advantages to adaptive
+streaming and especially when we consider
+
+471
+00:31:52.670 --> 00:31:59.074
+it during long form content video
+
+
+472
+00:31:59.074 --> 00:32:01.870
+can be much faster.
+
+473
+00:32:01.870 --> 00:32:05.160
+And live streaming can be made possible
+with this technique.
+
+474
+00:32:06.280 --> 00:32:09.380
+ike  say, the adaptive part, allows for
+
+475
+00:32:09.380 --> 00:32:13.860
+the best possible video quality with any
+connection.
+
+476
+00:32:13.860 --> 00:32:15.620
+Obviously this is crucial on mobile.
+
+477
+00:32:16.940 --> 00:32:22.300
+Popular adaptive streaming protocol we've
+got used to is technique is, is HTTP live
+
+478
+00:32:22.300 --> 00:32:27.820
+streaming from pple its built into iOS
+andAndroid HTM video tag.
+
+479
+00:32:27.820 --> 00:32:31.268
+JW player also supports it on desktop
+browsers.
+
+480
+00:32:31.268 --> 00:32:35.220
+So yeah lets lets take a look at a sample
+in here.
+
+481
+00:32:35.220 --> 00:32:37.139
+I'll just go over into that.
+
+482
+00:32:39.360 --> 00:32:43.806
+et's move to the other screen here.
+
+483
+00:32:43.806 --> 00:32:44.670
+[OS].
+
+484
+00:32:44.670 --> 00:32:45.928
+>> We have main engines start.
+
+485
+00:32:45.928 --> 00:32:47.212
+Four, three -.
+
+486
+00:32:47.212 --> 00:32:48.676
+>> We'll move a little bit further into
+the video.
+
+487
+00:32:48.676 --> 00:32:53.613
+[SO].
+
+488
+00:32:53.613 --> 00:32:57.507
+And you can see the the rate that we're
+getting there.
+
+489
+00:32:57.507 --> 00:32:58.400
+And yes, superb.
+
+490
+00:32:58.400 --> 00:33:00.640
+And you, we, can't see it on the webinar,
+but
+
+491
+00:33:00.640 --> 00:33:05.420
+it is really superb quality video playback
+that we're seeing here.
+
+492
+00:33:05.420 --> 00:33:10.480
+So yeah, great, great techniques with with
+adaptive streaming from JW Player there.
+
+493
+00:33:12.480 --> 00:33:13.760
+ow.
+
+494
+00:33:13.760 --> 00:33:17.190
+The downside of course of a, a technique
+like hls is that,
+
+495
+00:33:17.190 --> 00:33:19.820
+it is essentially proprietary, developed
+by
+
+496
+00:33:19.820 --> 00:33:23.810
+pple, likewise for, Microsoft's smooth
+streaming.
+
+497
+00:33:23.810 --> 00:33:27.480
+And, and that's why etflix and Google and
+Microsoft have,
+
+498
+00:33:27.480 --> 00:33:32.390
+proposed a standard MS, which is, short
+for media source extensions.
+
+499
+00:33:33.410 --> 00:33:36.640
+Which as it implies is, is an extension to
+
+500
+00:33:36.640 --> 00:33:40.710
+the the HTM media element, so video and
+audio.
+
+501
+00:33:40.710 --> 00:33:45.780
+And it's an P to enable client side
+JavaScript, to construct video streams.
+
+502
+00:33:46.810 --> 00:33:50.480
+So imagine that the P can download
+chunks of video and then put them
+
+503
+00:33:50.480 --> 00:33:54.980
+together itself to create a video stream,
+all of that done on the client.
+
+504
+00:33:54.980 --> 00:33:57.990
+ow MS crucially enables adaptive
+streaming
+
+505
+00:33:57.990 --> 00:34:00.665
+of course, and particularly, techniques
+such as.
+
+506
+00:34:00.665 --> 00:34:03.034
+Something called MPG-SH.
+
+507
+00:34:03.034 --> 00:34:09.320
+MPG-SH is, is an open source adaptive
+streaming solution, as they say.
+
+508
+00:34:09.320 --> 00:34:13.070
+And unlike, yeah unlike HS, it's an open
+industry standards.
+
+509
+00:34:14.200 --> 00:34:18.295
+t's a actually, and, and  see itself as
+a candidate recommendation for
+
+510
+00:34:18.295 --> 00:34:22.311
+the W3C, which means it, is on track for
+the coming part of .
+
+511
+00:34:22.311 --> 00:34:25.747
+And it's got, it's got wide support from
+browser vendors.
+
+512
+00:34:25.747 --> 00:34:27.690
+They all plan to support it and
+
+513
+00:34:27.690 --> 00:34:30.835
+internet xplorer and Chrome already
+[...] today.
+
+514
+00:34:30.835 --> 00:34:33.820
+So let's, let's have a look at a very
+basic demo, demo here.
+
+515
+00:34:33.820 --> 00:34:38.910
+This is slightly,   guess,
+but, it kinda shows MS in action.
+
+516
+00:34:38.910 --> 00:34:42.050
+f we can play the video here, you can see
+'m playing some video.
+
+517
+00:34:42.050 --> 00:34:46.390
+And then, down at the bottom, you can see
+a bunch of, events there.
+
+518
+00:34:46.390 --> 00:34:48.930
+And what's actually happening, this, this
+is slighty dotty.
+
+519
+00:34:48.930 --> 00:34:50.530
+What's happened there is that.
+
+520
+00:34:50.530 --> 00:34:54.800
+We've downloaded a video and chunked it up
+using file Ps, and then
+
+521
+00:34:54.800 --> 00:34:59.500
+put the chunks back together on the
+clients to demonstrate MS, in action.
+
+522
+00:34:59.500 --> 00:35:03.850
+ recommend looking up the code for that,
+because it's, it's
+
+523
+00:35:03.850 --> 00:35:07.950
+a really good introduction to MS and and
+how it works.
+
+524
+00:35:10.180 --> 00:35:15.520
+So, moving on to another three letter
+acronym.
+
+525
+00:35:15.520 --> 00:35:19.020
+ncrypted Media xtensions.
+
+526
+00:35:19.020 --> 00:35:23.750
+This is also a JavaScript P, again an
+extension to the actually more
+
+527
+00:35:23.750 --> 00:35:29.150
+media relevant Ps, to enable web
+applications to interact with
+
+528
+00:35:29.150 --> 00:35:34.570
+RM, igital Rights Management systems,
+called CM modules.
+
+529
+00:35:34.570 --> 00:35:36.690
+These are content decryption modules.
+
+530
+00:35:36.690 --> 00:35:42.170
+ow, the end of this is to allow playback
+of encrypted media.
+
+531
+00:35:42.170 --> 00:35:46.650
+f a browser supports M, it will detect
+if the video is encrypted by looking
+
+532
+00:35:46.650 --> 00:35:49.290
+at the video metadata, and it can then
+
+533
+00:35:49.290 --> 00:35:52.870
+negotiate with a CM, a content decryption
+module.
+
+534
+00:35:52.870 --> 00:35:56.100
+And a licensing server to get a key, and
+playback video.
+
+535
+00:35:57.100 --> 00:36:01.372
+M could either use simple clear key
+encryption, or an add on
+
+536
+00:36:01.372 --> 00:36:07.370
+that RM module such as Widevine working
+with a license server itself.
+
+537
+00:36:07.370 --> 00:36:11.190
+now, browsers that support M can detect
+if the
+
+538
+00:36:11.190 --> 00:36:14.650
+video is encrypted like  say, when
+playback begins.
+
+539
+00:36:14.650 --> 00:36:16.370
+And like  say, then they interact with
+the
+
+540
+00:36:16.370 --> 00:36:19.630
+content decryption module, get a key, play
+back content.
+
+541
+00:36:19.630 --> 00:36:24.680
+And, in that sense, the playback becomes
+transparent.
+
+542
+00:36:24.680 --> 00:36:26.120
+The user.
+
+543
+00:36:26.120 --> 00:36:29.430
+now, the crucial thing is that MS, the
+media
+
+544
+00:36:29.430 --> 00:36:34.290
+source extensions for doing adaptive
+streaming plus M enables
+
+545
+00:36:34.290 --> 00:36:38.360
+adaptive streaming with content protection
+which in turn allows
+
+546
+00:36:38.360 --> 00:36:42.930
+content providers to deliver commercial
+video to any platform.
+
+547
+00:36:42.930 --> 00:36:47.830
+So, in other words, to mobile platforms to
+slates and tablets and
+
+548
+00:36:47.830 --> 00:36:50.820
+so, so on, and all the other devices that
+are coming our way.
+
+549
+00:36:50.820 --> 00:36:54.550
+So M is a working draft specification.
+
+550
+00:36:54.550 --> 00:36:59.760
+And already used by etflix, and other
+publishers, if you wanna find out more, 
+
+551
+00:36:59.760 --> 00:37:05.400
+strongly recommend the article,  wrote on
+action live rocks, M WTF.
+
+552
+00:37:05.400 --> 00:37:09.210
+And yeah, with that, back to Jeroen, who's
+going to
+
+553
+00:37:09.210 --> 00:37:13.192
+tell us a little bit about text tracks, 
+believe.
+
+554
+00:37:13.192 --> 00:37:16.842
+>> So, text tracks are really, here we go.
+
+555
+00:37:16.842 --> 00:37:22.042
+So, text tracks are really the new hotness
+
+556
+00:37:22.042 --> 00:37:27.405
+in in like html five and online video
+today.
+
+557
+00:37:27.405 --> 00:37:31.650
+ We'll jump into a couple of
+like
+
+558
+00:37:31.650 --> 00:37:34.660
+demos to show why, and very quickly first.
+
+559
+00:37:35.750 --> 00:37:39.300
+et's take a look at the track element,
+and understand what it's doing.
+
+560
+00:37:40.310 --> 00:37:43.330
+t's really a, a new HTML5 element.
+
+561
+00:37:43.330 --> 00:37:46.490
+t focuses on making video accessible.
+
+562
+00:37:46.490 --> 00:37:48.600
+And it makes it  video
+accessible to
+
+563
+00:37:48.600 --> 00:37:51.229
+both the robots, computer, and the actual
+people.
+
+564
+00:37:53.330 --> 00:37:55.420
+t's although it's fairly new, it's been
+
+565
+00:37:55.420 --> 00:37:57.580
+like proposed probably about two years
+ago.
+
+566
+00:37:58.950 --> 00:38:03.810
+And t's really finding its way into the
+browsers very fast.
+
+567
+00:38:03.810 --> 00:38:05.550
+very major browser now supports it.
+
+568
+00:38:06.590 --> 00:38:08.088
+Firefox not yet.
+
+569
+00:38:08.088 --> 00:38:10.220
+Check out the ticket to see how far they
+are.
+
+570
+00:38:11.236 --> 00:38:15.350
+s far as  understand, they're really
+wrapping up support for it.
+
+571
+00:38:15.350 --> 00:38:19.970
+And what, so, what the track element does
+is, it provides
+
+572
+00:38:21.420 --> 00:38:25.540
+it provides, like, text data that can be
+timed to the video.
+
+573
+00:38:25.540 --> 00:38:28.312
+And there are really five kinds of, of
+tracks
+
+574
+00:38:28.312 --> 00:38:31.420
+that are, that are supported out of the
+box.
+
+575
+00:38:31.420 --> 00:38:34.820
+The first two are, are captions and
+subtitles.
+
+576
+00:38:34.820 --> 00:38:39.380
+Then there are video chapters, like, think
+about it, V menus
+
+577
+00:38:39.380 --> 00:38:44.040
+that allow you to quickly jump to sections
+of the movie.
+
+578
+00:38:44.040 --> 00:38:45.810
+There's audio descriptions.
+
+579
+00:38:45.810 --> 00:38:49.500
+So a little bit of text of what that
+
+580
+00:38:49.500 --> 00:38:52.210
+describes what's going on in different
+sections of the video.
+
+581
+00:38:52.210 --> 00:38:56.720
+And then the last one is metadata, that's
+where you as a web
+
+582
+00:38:56.720 --> 00:39:01.880
+publisher, as a web developer, can put
+your own time text into a file.
+
+583
+00:39:01.880 --> 00:39:07.830
+And then, do whatever you want in terms of
+syncing router, and video together.
+
+584
+00:39:07.830 --> 00:39:09.550
+We'll, we'll jump into that a little bit.
+
+585
+00:39:10.580 --> 00:39:12.590
+And looking on the right side, you see a
+great
+
+586
+00:39:12.590 --> 00:39:18.190
+example of a very basic implementation of
+a text track .
+
+587
+00:39:18.190 --> 00:39:19.610
+t's a single track.
+
+588
+00:39:19.610 --> 00:39:21.730
+t provides captions.
+
+589
+00:39:21.730 --> 00:39:26.100
+And, the short file of the captions is
+called sintel, sintel.vtt.
+
+590
+00:39:26.100 --> 00:39:27.410
+ow what does that look like?
+
+591
+00:39:28.440 --> 00:39:31.190
+So for example, here you have a video
+player.
+
+592
+00:39:31.190 --> 00:39:36.510
+t has a single track or captions, and
+those captions will pop up over the video.
+
+593
+00:39:38.810 --> 00:39:41.180
+ow the difference between captions and
+subtitles, it's like
+
+594
+00:39:41.180 --> 00:39:44.560
+subtitles are, are used, what you usually
+have multiple subtitles.
+
+595
+00:39:44.560 --> 00:39:47.950
+They're in, other languages than the
+language that the video is in.
+
+596
+00:39:47.950 --> 00:39:50.314
+So, 'm loading this one now.
+
+597
+00:39:50.314 --> 00:39:52.085
+'ll add some subtitles.
+
+598
+00:39:52.085 --> 00:39:57.144
+And for example, Japanese, Russian,
+Spanish, so-.
+
+599
+00:39:57.144 --> 00:40:03.070
+Captions provide accessibility to people
+that are your language.
+
+600
+00:40:03.070 --> 00:40:07.260
+And subtitles provide accessibility to
+people that
+
+601
+00:40:07.260 --> 00:40:09.360
+are not native speakers of your language.
+
+602
+00:40:12.390 --> 00:40:14.550
+ow, we talked about VTT.
+
+603
+00:40:14.550 --> 00:40:19.330
+And VTTs really the, the file format in
+which you can set your captions.
+
+604
+00:40:20.790 --> 00:40:25.070
+t's a very simple text format, and you
+can see an example on the right, there.
+
+605
+00:40:26.690 --> 00:40:31.100
+it's, a VTT file is divided up into
+something we call cues.
+
+606
+00:40:31.100 --> 00:40:36.430
+So, there are blurbs of text that contain
+start and the endpoint
+
+607
+00:40:36.430 --> 00:40:40.740
+of the, of that of the text, and then the
+text themselves.
+
+608
+00:40:40.740 --> 00:40:45.730
+And then the text can be one line, it can
+be multiple lines and if you do what you,
+
+609
+00:40:45.730 --> 00:40:52.174
+basically you can, you can do, you can
+also put metadata or, or JSO in it.
+
+610
+00:40:52.174 --> 00:40:54.710
+f you're not using a VTT port captioning.
+
+611
+00:40:56.710 --> 00:41:00.810
+f you do use VTT port captioning you can
+also style your captions.
+
+612
+00:41:00.810 --> 00:41:07.280
+That, that's a great that's a great
+example of the power of HTML5 videos.
+
+613
+00:41:07.280 --> 00:41:09.480
+ecause now all of a sudden, all of the
+
+614
+00:41:09.480 --> 00:41:13.200
+flexibility of CSS and Javascript are at
+your disposal.
+
+615
+00:41:13.200 --> 00:41:20.500
+And that's something that with, like,
+Firefox, Firefox has [...] for, Flash.
+
+616
+00:41:20.500 --> 00:41:24.000
+You had to build all those things yourself
+from
+
+617
+00:41:24.000 --> 00:41:26.508
+scratch every time you wanted to do
+something like this.
+
+618
+00:41:26.508 --> 00:41:32.550
+Here with HTML5 its part of the browser
+and you can just jump into it.
+
+619
+00:41:32.550 --> 00:41:34.530
+So let us actually jump into that.
+
+620
+00:41:37.300 --> 00:41:44.400
+Here is a example of VTT styling where the
+styles themselves are in the cues.
+
+621
+00:41:44.400 --> 00:41:48.130
+So in the cues there's very simple styles
+that say.
+
+622
+00:41:48.130 --> 00:41:52.960
+Could be on the left side, could be on the
+right side, could be in the middle.
+
+623
+00:41:52.960 --> 00:41:57.700
+And then you can have a bold tag, you can
+have italic tags,
+
+624
+00:41:57.700 --> 00:42:02.380
+and you can make the, you can change the
+color of certain cues.
+
+625
+00:42:03.480 --> 00:42:05.940
+You can designate speakers.
+
+626
+00:42:05.940 --> 00:42:09.942
+For example, you can say speaker one has
+blue text, speaker two
+
+627
+00:42:09.942 --> 00:42:14.860
+has green text, so you can really change
+how they are positioned.
+
+628
+00:42:14.860 --> 00:42:19.050
+And really make, make a distinction
+between speaker one and speaker two.
+
+629
+00:42:21.450 --> 00:42:23.790
+And, well here's another example.
+
+630
+00:42:23.790 --> 00:42:28.430
+n which you can really see, styling and
+CSS itself.
+
+631
+00:42:28.430 --> 00:42:34.540
+So if we, we it, if it's very green, and
+if we look at the page,
+
+632
+00:42:34.540 --> 00:42:40.510
+then you can see here that we're using a
+green background,
+
+633
+00:42:40.510 --> 00:42:46.110
+a monospace font, and a very bright green
+word wrap for the text.
+
+634
+00:42:46.110 --> 00:42:48.900
+So this is really a great like a great and
+easy
+
+635
+00:42:48.900 --> 00:42:53.680
+way to offer your, your viewers to style
+the captions themselves.
+
+636
+00:42:54.730 --> 00:42:59.450
+Which is also required for example by
+bodies like the FCC and nited States.
+
+637
+00:43:01.480 --> 00:43:06.822
+And then  kinda give it away already but
+here some more fun.
+
+638
+00:43:06.822 --> 00:43:14.960
+[MSC].
+
+639
+00:43:14.960 --> 00:43:18.612
+>> Karaoke, very important for the
+internet, so
+
+640
+00:43:18.612 --> 00:43:20.770
+very much a part of VTT as well.
+
+641
+00:43:27.880 --> 00:43:30.720
+And then let me quickly jump into a few
+items because we're
+
+642
+00:43:30.720 --> 00:43:34.530
+running over, we're running over time, and
+you'll have the links here.
+
+643
+00:43:34.530 --> 00:43:37.060
+ will be sharing the slides afterwards so
+you can
+
+644
+00:43:37.060 --> 00:43:41.140
+look over all the demos and, in their
+glorious details.
+
+645
+00:43:41.140 --> 00:43:46.740
+ut there is so much stuff you can do with
+syncing up captions beyond
+
+646
+00:43:46.740 --> 00:43:51.900
+just of syncing up videos with your
+webpage beyond just captions.
+
+647
+00:43:53.132 --> 00:43:56.660
+VTT the text directive really allow you to
+open up the
+
+648
+00:43:56.660 --> 00:44:00.080
+video timeline and do all kinds of
+interaction video with it.
+
+649
+00:44:00.080 --> 00:44:03.670
+So we have transcripts, tooltip
+thumbnails, that's a,
+
+650
+00:44:03.670 --> 00:44:06.950
+that's a small one  can quickly show you.
+
+651
+00:44:06.950 --> 00:44:09.000
+t allows, you've seen this on YouTube,
+you've
+
+652
+00:44:09.000 --> 00:44:11.580
+seen this on Hulu, JW Player also supports
+this.
+
+653
+00:44:11.580 --> 00:44:16.360
+t allows you to scan videos before
+actually going there and you can,
+
+654
+00:44:16.360 --> 00:44:20.050
+once, once you see a section that, that
+makes sense, you jump in there.
+
+655
+00:44:20.050 --> 00:44:22.660
+So you don't have to like kind of scrub
+through the
+
+656
+00:44:22.660 --> 00:44:25.830
+video itself and wait while it buffers and
+loads, and buffers.
+
+657
+00:44:26.960 --> 00:44:28.380
+You can do audio descriptions.
+
+658
+00:44:28.380 --> 00:44:31.100
+You can actually generate speech these
+days
+
+659
+00:44:31.100 --> 00:44:34.330
+in, in, in Chrome and Safari, very
+powerful.
+
+660
+00:44:34.330 --> 00:44:38.370
+nother cool one  quickly want to show is
+in-video search.
+
+661
+00:44:38.370 --> 00:44:44.110
+So, imagine you have the, the transcripts
+of hundreds of videos.
+
+662
+00:44:44.110 --> 00:44:47.980
+And then you actually offer a search the
+video.
+
+663
+00:44:47.980 --> 00:44:51.010
+Well, that's just what Sam did in this
+demo.
+
+664
+00:44:51.010 --> 00:44:54.120
+Which has a lot of Google developer
+videos.
+
+665
+00:44:54.120 --> 00:44:57.290
+Where you can search for a topic.
+
+666
+00:44:57.290 --> 00:45:00.740
+Then it provides the relevant videos with
+matches.
+
+667
+00:45:00.740 --> 00:45:03.310
+We click on one of the videos.
+
+668
+00:45:03.310 --> 00:45:09.490
+And it actually will [OS] you right
+there, where that like word pops up.
+
+669
+00:45:09.490 --> 00:45:12.420
+So it's really powerful to unlock that
+content of video.
+
+670
+00:45:15.280 --> 00:45:18.030
+There's other things you can do, think
+about slide synching, where you
+
+671
+00:45:18.030 --> 00:45:24.262
+have video with Powerpoint slides, you
+sync them up, for e-learning applications.
+
+672
+00:45:24.262 --> 00:45:27.030
+And then the last one is something 
+definitely
+
+673
+00:45:27.030 --> 00:45:29.050
+recommend you take a look at is GPS
+tracking.
+
+674
+00:45:29.050 --> 00:45:31.096
+So GPS coordinates of a video and then
+
+675
+00:45:31.096 --> 00:45:33.670
+syncing up, syncing that up to Google
+Maps.
+
+676
+00:45:37.350 --> 00:45:41.600
+That, that brings us to the end of the
+presentation part and we're now
+
+677
+00:45:41.600 --> 00:45:45.330
+jumping over to the Q and  session that
+will be moderated by Mark.
+
+678
+00:45:45.330 --> 00:45:48.270
+So, Mark 'm handing it over to you.
+
+679
+00:45:48.270 --> 00:45:51.870
+[K_O].
+
+680
+00:45:51.870 --> 00:45:53.190
+>> Thanks Jeroen.
+
+681
+00:45:53.190 --> 00:45:56.310
+We have ten minutes  don't know 'd like
+to find out whether
+
+682
+00:45:56.310 --> 00:45:59.310
+or not Jeroen and Sam, can you guys stay
+on a few minutes after?
+
+683
+00:46:02.760 --> 00:46:03.750
+>> Yeah, no trouble.
+
+684
+00:46:03.750 --> 00:46:04.760
+>> Yeah, we, we will.
+
+685
+00:46:04.760 --> 00:46:07.360
+>> Okay, great so well, let me, let me go
+
+686
+00:46:07.360 --> 00:46:10.030
+through a few of the questions that  am
+seeing here
+
+687
+00:46:13.000 --> 00:46:18.680
+et's see here, does HTML5 video already
+support multiple subtitles?
+
+688
+00:46:18.680 --> 00:46:22.360
+ot sure  understand that question there,
+do you guys?
+
+689
+00:46:22.360 --> 00:46:25.120
+>> That, yeah, that's a good question, 
+think possibly
+
+690
+00:46:25.120 --> 00:46:29.350
+what they mean is a choice of subtitles
+for different languages.
+
+691
+00:46:29.350 --> 00:46:32.080
+And that hasn't been implemented yet in
+the browser, what
+
+692
+00:46:32.080 --> 00:46:37.984
+ would say is that the player and
+captionator,  believe.
+
+693
+00:46:37.984 --> 00:46:41.170
+Polyfills the track, do support that.
+
+694
+00:46:41.170 --> 00:46:44.120
+n fact, those will, those are, that is
+part of
+
+695
+00:46:44.120 --> 00:46:47.310
+the spec and it will be coming to the
+browsers.
+
+696
+00:46:47.310 --> 00:46:50.000
+So the ability to choose by language,
+choose
+
+697
+00:46:50.000 --> 00:46:55.980
+different subtitles, move state between
+subtitles, and audio descriptions.
+
+698
+00:46:55.980 --> 00:46:57.910
+Other kinds of captioning and so on.
+
+699
+00:46:57.910 --> 00:47:01.690
+So yes the answer, the short answer is not
+yet notably
+
+700
+00:47:01.690 --> 00:47:05.940
+in the browser done by the polyfills
+coming to browsers really soon.
+
+701
+00:47:07.500 --> 00:47:11.090
+>> and the, the, the track element it's
+supported
+
+702
+00:47:11.090 --> 00:47:16.690
+it's WebVTT, that's the only subtitle file
+format supported, correct?
+
+703
+00:47:16.690 --> 00:47:19.120
+>> You can also use  believe in all the
+browsers
+
+704
+00:47:19.120 --> 00:47:22.420
+you can also use ST format which is,
+which is very similar.
+
+705
+00:47:24.910 --> 00:47:29.050
+And the,  think the polyfill support
+other formats as well.
+
+706
+00:47:29.050 --> 00:47:31.869
+ut yeah, 'd be worth looking at the
+documentation for that.
+
+707
+00:47:35.170 --> 00:47:38.580
+>>  think this question is equally good
+for either one of you.
+
+708
+00:47:38.580 --> 00:47:41.920
+Just a little bit, your view on the future
+of MPG dash.
+
+709
+00:47:41.920 --> 00:47:42.420
+>> You
+
+710
+00:47:45.230 --> 00:47:46.165
+wanna take that first?
+
+711
+00:47:46.165 --> 00:47:47.360
+>> .
+
+712
+00:47:47.360 --> 00:47:47.910
+Oh yeah, sure.
+
+713
+00:47:47.910 --> 00:47:55.012
+For, for somebody like us we're, we're in
+this space of like figuring out for all
+
+714
+00:47:55.012 --> 00:48:00.080
+our publishers, what works, and what is
+the best way to stream your video today.
+
+715
+00:48:01.120 --> 00:48:04.600
+Right now today, HS, because of its
+prevalence
+
+716
+00:48:04.600 --> 00:48:07.210
+in old devices is, is a great standard.
+
+717
+00:48:07.210 --> 00:48:10.690
+However, we strong, like with HTML5
+itself, we
+
+718
+00:48:10.690 --> 00:48:13.910
+strongly believe that MPG ash is gonna
+be
+
+719
+00:48:13.910 --> 00:48:18.040
+a standard the standard that provides the
+depth
+
+720
+00:48:18.040 --> 00:48:21.500
+of streaming to not only mobile devices in
+HTML5.
+
+721
+00:48:21.500 --> 00:48:25.060
+ut also desktop devices in HTML5, and
+around
+
+722
+00:48:25.060 --> 00:48:28.707
+your corner set tops in the HTML5 as well.
+
+723
+00:48:28.707 --> 00:48:36.260
+n terms of timing we are now we're
+[...] testing and we're testing
+
+724
+00:48:36.260 --> 00:48:41.350
+for [...] with the media source
+extensions that, that sound those demos.
+
+725
+00:48:41.350 --> 00:48:45.120
+And probably before the end of the year
+we, we
+
+726
+00:48:45.120 --> 00:48:50.545
+will have a, we will have an
+implementation of F-MJW player.
+
+727
+00:48:50.545 --> 00:48:53.790
+>> Great,
+
+728
+00:48:53.790 --> 00:48:55.720
+>> Yeah just a couple of things to add to
+that.
+
+729
+00:48:55.720 --> 00:49:00.090
+ mean, the move has really been towards
+using JV
+
+730
+00:49:00.090 --> 00:49:03.058
+script libraries that work with MSC so doe
+stuff like -JS.
+
+731
+00:49:03.058 --> 00:49:06.270
+So  think this kind of, there's healthy
+competition in this area.
+
+732
+00:49:06.270 --> 00:49:12.600
+t's, it's all open source, which is
+leading to, you know, really,
+
+733
+00:49:12.600 --> 00:49:15.450
+ think you know, a high standard of code
+going to that,
+
+734
+00:49:15.450 --> 00:49:19.080
+and we're seeing some great results if you
+look at the dash
+
+735
+00:49:19.080 --> 00:49:23.580
+players that are out there, check out the
+YouTube dash player example.
+
+736
+00:49:23.580 --> 00:49:27.060
+And so the move has been away from simply
+setting,
+
+737
+00:49:27.060 --> 00:49:29.990
+a manifest file, an MP as the source of
+the video.
+
+738
+00:49:29.990 --> 00:49:34.390
+So, to give us the flexibility to do
+richer stuff with, with
+
+739
+00:49:34.390 --> 00:49:39.470
+JavaScript to do that with, with an open
+source standard, MPG ash.
+
+740
+00:49:39.470 --> 00:49:41.240
+So  think the future looks bright for
+ash.
+
+741
+00:49:41.240 --> 00:49:41.690
+efinitely.
+
+742
+00:49:41.690 --> 00:49:42.780
+specially on mobile.
+
+743
+00:49:46.590 --> 00:49:49.990
+>> This is  think a quick question for
+you, Sam.
+
+744
+00:49:49.990 --> 00:49:52.860
+n terms of browser support for alpha
+channel and transparent
+
+745
+00:49:52.860 --> 00:49:56.010
+backgrounds is it, is it Chrome that only
+supports that?
+
+746
+00:49:56.010 --> 00:49:59.291
+o you have any idea when the other
+browsers are planning to, etcetera?
+
+747
+00:50:00.980 --> 00:50:04.144
+>> You know  don't know when that's
+coming to other browsers.
+
+748
+00:50:04.144 --> 00:50:07.710
+but, yeah, we have it in Chrome.
+
+749
+00:50:07.710 --> 00:50:11.980
+f people wanna have a look, there is a,
+an HTML5 rocks up, update, article.
+
+750
+00:50:11.980 --> 00:50:17.570
+t's linked to from the, from the demo
+that ,  showed there that gives some
+
+751
+00:50:17.570 --> 00:50:20.380
+more detail on the, on how, how, how
+
+752
+00:50:20.380 --> 00:50:25.230
+to produce, videos with alpha transparency
+in them.
+
+753
+00:50:25.230 --> 00:50:29.030
+ut 'm afraid  don't have updates for,
+for other browsers sadly.
+
+754
+00:50:29.030 --> 00:50:32.770
+ut , you know,  think a technique with
+huge amount
+
+755
+00:50:32.770 --> 00:50:37.390
+of potential, we've noticed and incredible
+amount of interest in that.
+
+756
+00:50:37.390 --> 00:50:39.556
+So  think that's going to push browser,
+the
+
+757
+00:50:39.556 --> 00:50:40.440
+browser vendors into, other browser
+
+758
+00:50:40.440 --> 00:50:44.620
+vendors into implementing alpha
+transparency.
+
+759
+00:50:46.660 --> 00:50:50.626
+>> ased on what you said with MSC and
+M, is
+
+760
+00:50:50.626 --> 00:50:55.820
+it sufficient to protect video only being
+streamed and not being downloaded.
+
+761
+00:50:56.990 --> 00:51:02.630
+>> Yes, there is work being done on that
+some, the, the standard is all
+
+762
+00:51:02.630 --> 00:51:07.910
+around protection of the video whether it
+is viewed offline, after downloading, or
+
+763
+00:51:07.910 --> 00:51:14.830
+its views live streamed, and
+implementation of that happening now.
+
+764
+00:51:14.830 --> 00:51:18.180
+We'll be actually producing some more
+information about that shortly.
+
+765
+00:51:18.180 --> 00:51:23.940
+So definitely the, the, the P, the
+technology
+
+766
+00:51:23.940 --> 00:51:27.032
+is oriented to, to download to offline to,
+
+767
+00:51:27.032 --> 00:51:29.020
+you know, saving a video and watching it
+
+768
+00:51:29.020 --> 00:51:31.830
+on a plane whatever, as well as live
+streaming.
+
+769
+00:51:34.168 --> 00:51:37.680
+>> Yeah, yeah and  think it's important
+to add that the, with, if you're
+
+770
+00:51:37.680 --> 00:51:40.780
+using eme the video files that are
+
+771
+00:51:40.780 --> 00:51:43.520
+actually sent over the internet are
+completely encrypted.
+
+772
+00:51:43.520 --> 00:51:47.125
+So there's nothing you can do with it if
+you intercept it either
+
+773
+00:51:47.125 --> 00:51:51.480
+on the server side somewhere in the middle
+or on the browser side.
+
+774
+00:51:51.480 --> 00:51:55.220
+>> You really need those like, keys that
+are locked
+
+775
+00:51:55.220 --> 00:51:59.270
+up deep in the browser to to decrypt the
+video.
+
+776
+00:51:59.270 --> 00:52:03.460
+VM's really like the highest level of
+security that,
+
+777
+00:52:03.460 --> 00:52:08.210
+that you can get from from, from online
+devices.
+
+778
+00:52:08.210 --> 00:52:12.070
+That's also why etflix is able to use M
+and Hulu is
+
+779
+00:52:12.070 --> 00:52:16.670
+able to use M to, stream video content,
+studio content with it.
+
+780
+00:52:16.670 --> 00:52:20.230
+[K_O]
+
+781
+00:52:20.230 --> 00:52:21.300
+>> Great.
+
+782
+00:52:21.300 --> 00:52:21.460
+Yeah.
+
+783
+00:52:21.460 --> 00:52:22.530
+There's a lot of questions here.
+
+784
+00:52:22.530 --> 00:52:25.820
+So, you guys just let me know when we need
+to wrap it up.
+
+785
+00:52:25.820 --> 00:52:27.200
+ut 'm gonna keep moving forward.
+
+786
+00:52:28.570 --> 00:52:30.520
+ think this is a fair question, and 'm
+
+787
+00:52:30.520 --> 00:52:33.390
+gonna ask, ither one of you to answer
+this.
+
+788
+00:52:33.390 --> 00:52:38.260
+ut, given that HTML5 video is becoming
+well supported, and
+
+789
+00:52:38.260 --> 00:52:41.230
+that there is the native video tag, what,
+what is
+
+790
+00:52:41.230 --> 00:52:45.430
+the added value in, in somebody utilizing,
+say, for example,
+
+791
+00:52:45.430 --> 00:52:49.266
+the JW Player instead of just the native
+video tag?
+
+792
+00:52:49.266 --> 00:52:53.878
+[K_O].
+
+793
+00:52:53.878 --> 00:52:54.900
+>> So then [CROSSTK].
+
+794
+00:52:54.900 --> 00:52:59.600
+>>  can think of some good business
+myself.
+
+795
+00:52:59.600 --> 00:53:02.550
+>> My  can start out then could fill in.
+
+796
+00:53:03.950 --> 00:53:07.220
+What do you see where to video tag, the
+video player sits on top of the
+
+797
+00:53:07.220 --> 00:53:10.040
+video tag and then provides an entire
+video
+
+798
+00:53:10.040 --> 00:53:14.230
+experience framework for publishers, and,
+and ,and, and viewers.
+
+799
+00:53:14.230 --> 00:53:16.840
+So the video plays, that part is great.
+
+800
+00:53:16.840 --> 00:53:19.640
+ut what we're doing with JW player
+
+801
+00:53:19.640 --> 00:53:25.096
+is offering a unified scripting
+environment around that.
+
+802
+00:53:25.096 --> 00:53:28.100
+You invite a skinning environment,
+environment around it.
+
+803
+00:53:28.100 --> 00:53:31.450
+So you can very easily make sure that that
+video player
+
+804
+00:53:31.450 --> 00:53:35.050
+looks exactly the same on all browsers and
+all the devices.
+
+805
+00:53:35.050 --> 00:53:36.370
+And it adheres to your brand name.
+
+806
+00:53:37.400 --> 00:53:40.200
+Something we're also doing is analytics,
+
+807
+00:53:40.200 --> 00:53:44.350
+so providing your backhand via Google
+analytics,
+
+808
+00:53:44.350 --> 00:53:50.910
+or dobe analytics or, Chartbeats or our
+own JW player analytics, with the data.
+
+809
+00:53:50.910 --> 00:53:53.500
+So to give you insights into what's going
+on
+
+810
+00:53:53.500 --> 00:53:57.140
+with your, with your videos, who's
+watching what, where, when.
+
+811
+00:53:57.140 --> 00:54:02.950
+And then another big chunk is the
+streaming that we've talked about.
+
+812
+00:54:02.950 --> 00:54:07.250
+Sam already said the streaming is really
+moving especially
+
+813
+00:54:07.250 --> 00:54:10.910
+with HTML5 the logic port is moving into
+client.
+
+814
+00:54:10.910 --> 00:54:12.835
+There's going to be a limited number of,
+
+815
+00:54:12.835 --> 00:54:15.800
+of streaming libraries that, that focus on
+that.
+
+816
+00:54:15.800 --> 00:54:19.500
+And JW Player is, is gonna be one of them.
+
+817
+00:54:19.500 --> 00:54:26.150
+And then finally we're offer a lot of
+tools for monetization of their video.
+
+818
+00:54:26.150 --> 00:54:29.960
+So, before, in the middle or after your
+video playing, playing
+
+819
+00:54:29.960 --> 00:54:33.080
+those ads and making sure that you can
+connect your ad server.
+
+820
+00:54:33.080 --> 00:54:38.180
+That's also something that JW Player will
+provide on top of the video element.
+
+821
+00:54:38.180 --> 00:54:42.610
+So overall, the basic playback that's,
+that's sold,
+
+822
+00:54:42.610 --> 00:54:45.430
+that's really working well with the HTML5
+element.
+
+823
+00:54:45.430 --> 00:54:48.660
+ut then, providing all that business
+logic, providing all
+
+824
+00:54:48.660 --> 00:54:50.800
+that, that added value on top of it,
+that's
+
+825
+00:54:50.800 --> 00:54:53.230
+something that,  think would, JW Player
+will be,
+
+826
+00:54:53.230 --> 00:54:56.300
+will continue to do that for the coming
+years.
+
+827
+00:54:59.660 --> 00:55:01.896
+>> Yeah,  mean, [CROSSTK]  don't
+really have a lot
+
+828
+00:55:01.896 --> 00:55:04.050
+to add, really  don't have a lot to add
+to that.
+
+829
+00:55:04.050 --> 00:55:06.530
+ mean, you know,  think that we've got a
+
+830
+00:55:06.530 --> 00:55:09.780
+lot, you know, different video players
+kind of handling the, the
+
+831
+00:55:09.780 --> 00:55:14.245
+long tail of, of browsers but really video
+players like
+
+832
+00:55:14.245 --> 00:55:18.640
+JW Player are helping developers not have
+to reinvent the wheel.
+
+833
+00:55:18.640 --> 00:55:21.810
+There's a stack of stuff that you're going
+to need to do yourself.
+
+834
+00:55:21.810 --> 00:55:26.620
+f you don't use the facilities that are
+already available.
+
+835
+00:55:26.620 --> 00:55:31.588
+f you use a library java script like JW
+Player.
+
+836
+00:55:31.588 --> 00:55:36.410
+So, you know,  think it's helping
+developers not have to do the same thing
+
+837
+00:55:36.410 --> 00:55:42.790
+all over again to, to get a unique piece
+or unified, unified user
+
+838
+00:55:42.790 --> 00:55:46.830
+interface and, take advantage of all the,
+all the techniques that [...] there.
+
+839
+00:55:48.900 --> 00:55:51.218
+>> Thanks Sam,  know it's a bit self
+serving to
+
+840
+00:55:51.218 --> 00:55:54.750
+ask JW to answer that question but, but
+he's absolutely correct.
+
+841
+00:55:54.750 --> 00:55:59.320
+And, and that, you know, you can, you can
+do a lot of these things with HTML5
+
+842
+00:55:59.320 --> 00:56:04.140
+but the JW player has done a lot of the
+work, and there's a lot of value there.
+
+843
+00:56:04.140 --> 00:56:08.710
+We're at, 12 o'clock pacific, which is an
+hour
+
+844
+00:56:08.710 --> 00:56:10.630
+so any of you had any other meetings that
+
+845
+00:56:10.630 --> 00:56:15.608
+you need to attend to just letting you
+know that we are at the end of the hour.
+
+846
+00:56:15.608 --> 00:56:18.930
+We've agreed to stay on a few minutes
+extra to answer some additional
+
+847
+00:56:18.930 --> 00:56:22.100
+questions, so anyone that wants to stay on
+for that is welcome to.
+
+848
+00:56:22.100 --> 00:56:25.420
+And we'll just continue forward with a few
+additional questions.
+
+849
+00:56:25.420 --> 00:56:28.110
+For those of you are that leaving thank
+you so much for joining
+
+850
+00:56:28.110 --> 00:56:32.160
+us and, and thanks to J.W. and Sam for
+your time in presenting.
+
+851
+00:56:34.790 --> 00:56:36.750
+et's go back so.
+
+852
+00:56:36.750 --> 00:56:40.690
+This is an interesting question and, and
+'m not sure if you guys have any answers
+
+853
+00:56:40.690 --> 00:56:46.734
+off the top of your head but when you Oh,
+'m sorry  lost the question here.
+
+854
+00:56:46.734 --> 00:56:48.790
+et's see here.
+
+855
+00:56:50.630 --> 00:56:53.010
+ apologize.
+
+856
+00:56:54.090 --> 00:56:55.860
+n the meantime 'm going to ask you a
+quick
+
+857
+00:56:55.860 --> 00:57:02.035
+one, Jeroen, when will JW Player support
+HS and HTML5 mode?
+
+858
+00:57:02.035 --> 00:57:06.230
+[K_O]
+
+859
+00:57:06.230 --> 00:57:09.876
+>> So they'll probably be about the same
+frame time as as, as MPG dash.
+
+860
+00:57:09.876 --> 00:57:12.030
+We have to jump through a couple of hoops
+
+861
+00:57:12.030 --> 00:57:15.810
+because their HS is not natively
+supported in the browsers.
+
+862
+00:57:15.810 --> 00:57:17.660
+ut we are working at it.
+
+863
+00:57:17.660 --> 00:57:20.800
+We're, we can't do the same trick as we
+did in Flash.
+
+864
+00:57:20.800 --> 00:57:25.410
+So late this year, we expect to have we
+have it
+
+865
+00:57:25.410 --> 00:57:29.929
+working in HTML5 across Chrome and, and
+hopefully also other browsers.
+
+866
+00:57:32.195 --> 00:57:34.510
+>> Great, okay, here's the question  was
+looking for.
+
+867
+00:57:34.510 --> 00:57:41.090
+So, with, with HTML5 video in the future,
+can we touch on any top-line effects
+
+868
+00:57:41.090 --> 00:57:44.170
+that might have on advertising, like,
+pre-roll ads,
+
+869
+00:57:44.170 --> 00:57:47.510
+or more interactive formats in the video
+players?
+
+870
+00:57:47.510 --> 00:57:51.670
+Have you, have you seen any
+implementations of HTML5
+
+871
+00:57:51.670 --> 00:57:56.212
+video with regards to new ways of,
+in-video advertising?
+
+872
+00:57:56.212 --> 00:57:56.756
+[K_O].
+
+873
+00:58:01.350 --> 00:58:03.870
+>> Yeah  can jump into the advertising
+part, and  think
+
+874
+00:58:03.870 --> 00:58:07.380
+in the interactivity part Sam will have a
+lot of feedback on.
+
+875
+00:58:07.380 --> 00:58:09.540
+For advertising specifically.
+
+876
+00:58:09.540 --> 00:58:16.410
+The HTML5 provides the same set of
+functionality as flash can do.
+
+877
+00:58:16.410 --> 00:58:22.560
+t's all about finding common formats that
+work and scale and many advertisers can
+
+878
+00:58:22.560 --> 00:58:24.640
+create and many video players can play
+
+879
+00:58:24.640 --> 00:58:30.110
+back the , the internet advertising
+bureau.
+
+880
+00:58:30.110 --> 00:58:33.910
+Has a set of standards in, in flash and
+that now have
+
+881
+00:58:33.910 --> 00:58:39.890
+been imported to HTML5 and they're,
+they're getting picked up really swiftly.
+
+882
+00:58:39.890 --> 00:58:44.040
+And most of it is still the like the
+general
+
+883
+00:58:44.040 --> 00:58:48.250
+20, 30 seconds pre roll, mid roll, post
+roll though.
+
+884
+00:58:48.250 --> 00:58:51.972
+Just because that like, that experience of
+having a very well
+
+885
+00:58:51.972 --> 00:58:54.378
+produced commercial played full screen,
+there's,
+
+886
+00:58:54.378 --> 00:58:56.780
+there's nothing too bad about that.
+
+887
+00:58:56.780 --> 00:58:58.400
+ut there are in addition to the
+additional
+
+888
+00:58:58.400 --> 00:59:02.010
+one of either interactive videos where you
+can choose
+
+889
+00:59:02.010 --> 00:59:04.420
+like interactive ads where you can choose
+like, do
+
+890
+00:59:04.420 --> 00:59:06.680
+ want to play this one or this one?
+
+891
+00:59:06.680 --> 00:59:10.240
+You have overlays that you've seen on
+YouTube that you
+
+892
+00:59:10.240 --> 00:59:14.260
+know, those other sites are starting to
+use that a lot.
+
+893
+00:59:14.260 --> 00:59:18.670
+And you have you have things like tweet
+out
+
+894
+00:59:18.670 --> 00:59:23.774
+this ad to your friends or share it on
+Facebook.
+
+895
+00:59:23.774 --> 00:59:25.820
+So the kind of the, the social part of
+
+896
+00:59:25.820 --> 00:59:29.270
+it is also happening that's also an
+interesting area.
+
+897
+00:59:31.960 --> 00:59:36.820
+>> Yeah,  mean absolutely,  think like
+just
+
+898
+00:59:36.820 --> 00:59:41.675
+as Gerald says the work on common formats
+the
+
+899
+00:59:41.675 --> 00:59:44.160
+ standards have been taken up a lot of
+
+900
+00:59:44.160 --> 00:59:47.340
+thought going into that really over
+several years now.
+
+901
+00:59:47.340 --> 00:59:50.040
+And just the ability to work with the
+HTML5
+
+902
+00:59:50.040 --> 00:59:52.600
+video element, cuz it is an element like
+any other.
+
+903
+00:59:52.600 --> 00:59:57.564
+You know, we, of course, have the ability
+to to swap sources on an element.
+
+904
+00:59:57.564 --> 01:00:02.823
+We have the ability to to overlay content,
+like Jeroen was saying.
+
+905
+01:00:02.823 --> 01:00:06.827
+so,  think, much more flexibility,
+really.
+
+906
+01:00:06.827 --> 01:00:09.140
+Much more,  don't know.
+
+907
+01:00:09.140 --> 01:00:12.960
+ think a brighter future for,
+advertisers, on the video element.
+
+908
+01:00:12.960 --> 01:00:15.730
+ecause, of the fact that it's just part
+of the dom.
+
+909
+01:00:15.730 --> 01:00:19.710
+And that makes life simpler, rather than
+swapping between technologies.
+
+910
+01:00:19.710 --> 01:00:22.960
+So,  look forward to some innovative,
+innovative
+
+911
+01:00:22.960 --> 01:00:25.029
+forms of advertising coming through on the
+video album.
+
+912
+01:00:27.170 --> 01:00:29.980
+>> Thanks guys similar in terms of
+
+913
+01:00:29.980 --> 01:00:32.610
+the future, when you, when you look
+specifically
+
+914
+01:00:32.610 --> 01:00:35.480
+at connective TVs, what are the most
+interesting
+
+915
+01:00:35.480 --> 01:00:38.200
+impacts of HTML5 video do you guys see?
+
+916
+01:00:38.200 --> 01:00:41.310
+o you, for example, do you see HS-
+
+917
+01:00:41.310 --> 01:00:45.270
+etc cetera having a major impact on tv
+streaming?
+
+918
+01:00:45.270 --> 01:00:46.440
+tcetera.
+
+919
+01:00:46.440 --> 01:00:52.771
+What, what thoughts do you think about
+ video when connected to tv's.
+
+920
+01:00:52.771 --> 01:00:53.810
+[K_O].
+
+921
+01:00:53.810 --> 01:00:54.620
+>>  think it's interesting.
+
+922
+01:00:54.620 --> 01:00:58.440
+,  think just, just the The way that
+
+923
+01:00:58.440 --> 01:01:01.040
+this is exported you know, we had years
+of, a
+
+924
+01:01:01.040 --> 01:01:04.100
+computer being a box under a desk with, a
+keyboard
+
+925
+01:01:04.100 --> 01:01:07.540
+and a screen, a small screen, in front of
+you.
+
+926
+01:01:07.540 --> 01:01:10.760
+And now we're getting this huge range and
+
+927
+01:01:10.760 --> 01:01:14.950
+how we handle, streaming in that scenario
+and so.
+
+928
+01:01:14.950 --> 01:01:18.340
+ mean, of the streaming that distribution
+of media in general.
+
+929
+01:01:18.340 --> 01:01:21.990
+So, thinking about say will we need to
+have, really
+
+930
+01:01:21.990 --> 01:01:26.720
+huge screens or for video and how will we
+do that?
+
+931
+01:01:26.720 --> 01:01:30.440
+You know, when we get beyond ultra H, how
+will codex work?
+
+932
+01:01:31.590 --> 01:01:33.380
+ mean,  think one of the things that
+makes me feel
+
+933
+01:01:33.380 --> 01:01:39.480
+more optimistic, is the implementation in
+hardware so, incoding and decoding in
+
+934
+01:01:39.480 --> 01:01:44.160
+hardware and so, the ability to do that in
+you know,
+
+935
+01:01:44.160 --> 01:01:49.750
+increasingly smaller devices and you know,
+right in cameras and so and so on.
+
+936
+01:01:49.750 --> 01:01:52.890
+So,  think a lot of.
+
+937
+01:01:52.890 --> 01:01:54.780
+You know, we are getting good stuff coming
+through with
+
+938
+01:01:54.780 --> 01:01:57.850
+the software, so, you know, stuff like,
+dash and all
+
+939
+01:01:57.850 --> 01:02:02.800
+that, but, also, very impressive work
+being done with the,
+
+940
+01:02:02.800 --> 01:02:06.690
+with the code x, in particular
+incorporating that stuff on chips.
+
+941
+01:02:08.390 --> 01:02:10.289
+>> Yeah, ,  totally agree.
+
+942
+01:02:11.600 --> 01:02:14.250
+And in addition to that, was something
+like a
+
+943
+01:02:14.250 --> 01:02:18.488
+device like the Chromecast is really
+interesting to me.
+
+944
+01:02:18.488 --> 01:02:21.580
+ike , like 'm really enthusiastic about
+this because
+
+945
+01:02:21.580 --> 01:02:25.200
+it, it breaks up the TV model so much.
+
+946
+01:02:25.200 --> 01:02:28.160
+ike the iPhone did that for, for
+smartphones.
+
+947
+01:02:29.424 --> 01:02:34.412
+You are able, you are able as a web
+developer to build your apps toward
+
+948
+01:02:34.412 --> 01:02:37.336
+chromecast in HTML5 so an old tool, CSS
+
+949
+01:02:37.336 --> 01:02:41.740
+JavaScript that you know, and are familiar
+with.
+
+950
+01:02:41.740 --> 01:02:46.720
+And then on top of that, that device is
+not just some box sitting by itself
+
+951
+01:02:46.720 --> 01:02:48.600
+with a remote control you have to fiddle
+
+952
+01:02:48.600 --> 01:02:51.260
+with, but it actually talks to your phone
+and
+
+953
+01:02:51.260 --> 01:02:55.290
+it talks to your tablet, and all of a
+sudden, you can use a bit of JavaScript
+
+954
+01:02:55.290 --> 01:02:57.440
+to really help your phone and your TV
+
+955
+01:02:57.440 --> 01:03:01.150
+talk to each other and provide really
+interactive experiences.
+
+956
+01:03:02.770 --> 01:03:05.970
+And an example like, what YouTube is doing
+with
+
+957
+01:03:05.970 --> 01:03:09.710
+their [...] playlist on Chromecast is
+just super cool.
+
+958
+01:03:09.710 --> 01:03:12.450
+You, boot to Chromecast on a TV.
+
+959
+01:03:12.450 --> 01:03:15.870
+verybody who has a phone, is on the same
+network can
+
+960
+01:03:15.870 --> 01:03:19.350
+see the playlist on a Chromecast and start
+adding stuff to it.
+
+961
+01:03:19.350 --> 01:03:21.460
+So you can see how the, the.
+
+962
+01:03:21.460 --> 01:03:25.140
+Get wild really, really swiftly, and
+that's just one application.
+
+963
+01:03:25.140 --> 01:03:27.380
+ think there are, there's got to be a lot
+of those.
+
+964
+01:03:28.730 --> 01:03:29.150
+>> Yeah.
+
+965
+01:03:29.150 --> 01:03:33.240
+That's, 'm very happy to hear how you,
+shout out for the chromecast there.
+
+966
+01:03:33.240 --> 01:03:35.390
+And , just one thing  wanted to bring up
+here,
+
+967
+01:03:35.390 --> 01:03:39.040
+really, is the, you know, work to me is
+just,  mean.
+
+968
+01:03:39.040 --> 01:03:40.920
+Yeah, 'm old enough to remember when
+people used
+
+969
+01:03:40.920 --> 01:03:42.760
+to sit around the telly for hours on end.
+
+970
+01:03:42.760 --> 01:03:43.610
+There was nothing else.
+
+971
+01:03:43.610 --> 01:03:47.030
+ understand people still watch a lot of
+television, but, you know, what we're
+
+972
+01:03:47.030 --> 01:03:51.380
+seeing now is this huge shift in what
+people do with their free time.
+
+973
+01:03:51.380 --> 01:03:58.112
+ had some figures that you know, in China
+in 2012, like, 30% of
+
+974
+01:03:58.112 --> 01:04:05.920
+households, only 30% in 2012 of households
+in eijing, watch TV.
+
+975
+01:04:05.920 --> 01:04:07.260
+ow, that was down from, like, 70% in
+2009.
+
+976
+01:04:07.260 --> 01:04:10.080
+That's, you know, that's people moving to
+online video.
+
+977
+01:04:10.080 --> 01:04:13.810
+And, not just online video, but this kind
+of range of new experiences.
+
+978
+01:04:13.810 --> 01:04:15.130
+You know.
+
+979
+01:04:15.130 --> 01:04:20.120
+Popular shows online, in China are getting
+audiences of like,
+
+980
+01:04:20.120 --> 01:04:25.900
+250 million or more, and some,  think
+that, you know, what
+
+981
+01:04:25.900 --> 01:04:30.540
+we're seeing is, yeah, this, this, this,
+new, this whole new
+
+982
+01:04:30.540 --> 01:04:36.070
+world of, of new experiences, really,
+really so much richer than.
+
+983
+01:04:36.070 --> 01:04:40.290
+You know, a kind of tiny black and white
+screen experience that  remember
+
+984
+01:04:40.290 --> 01:04:41.330
+when  was a kid which was
+
+985
+01:04:41.330 --> 01:04:45.930
+completely, uninteractive and what we're
+getting now is
+
+986
+01:04:45.930 --> 01:04:51.790
+the kind of stuff [...] talk about
+with [...] is  feel is a much richer
+
+987
+01:04:52.960 --> 01:04:58.548
+richer experience with just huge potential
+for even, even more types of interaction.
+
+988
+01:04:58.548 --> 01:04:59.048
+[K_O].
+
+989
+01:05:02.010 --> 01:05:03.180
+>> Great.
+
+990
+01:05:03.180 --> 01:05:08.030
+Thanks, we'll have a few more questions,
+and then we'll
+
+991
+01:05:08.030 --> 01:05:10.320
+wrap it up here in about, five more
+minutes here.
+
+992
+01:05:11.890 --> 01:05:18.550
+o either of you have, or could you refer
+to any, examples of best practices
+
+993
+01:05:18.550 --> 01:05:24.059
+for, regarding streaming cloud hosted
+video and live video in HTML5?
+
+994
+01:05:27.070 --> 01:05:31.520
+>> ,  think the two links that we have
+up on the screen are great starters.
+
+995
+01:05:31.520 --> 01:05:34.670
+So, the HTML5 rocks website has a lot of
+information.
+
+996
+01:05:34.670 --> 01:05:41.040
+JW Player are [...] port and our block
+have a lot of upgrade information.
+
+997
+01:05:41.040 --> 01:05:45.156
+n terms of streaming  would take a look
+at a tool like [...].
+
+998
+01:05:45.156 --> 01:05:47.830
+That [...] streaming engines.
+
+999
+01:05:47.830 --> 01:05:49.930
+Great tools who deal with both on
+
+1000
+01:05:49.930 --> 01:05:53.420
+demand and live streaming processing to
+multiple devices.
+
+1001
+01:05:55.820 --> 01:05:56.270
+>> Yep.
+
+1002
+01:05:56.270 --> 01:06:00.925
+'d, 'd like to give another shout out
+actually HTML5
+
+1003
+01:06:00.925 --> 01:06:06.245
+rocks as is a nice article by [...]
+HTML5 video which,
+
+1004
+01:06:06.245 --> 01:06:09.640
+has That kind of description of the video
+element but
+
+1005
+01:06:09.640 --> 01:06:13.060
+also some ideas for the kind of best
+practice on there.
+
+1006
+01:06:13.060 --> 01:06:16.380
+We're actually in the process of working
+on, on just this.
+
+1007
+01:06:16.380 --> 01:06:19.100
+ kind of best practice document for
+video.
+
+1008
+01:06:19.100 --> 01:06:21.400
+'ll be giving more details of that 'll
+keep
+
+1009
+01:06:21.400 --> 01:06:24.440
+you posted when we when we have that
+online.
+
+1010
+01:06:27.280 --> 01:06:27.430
+>> Right.
+
+1011
+01:06:27.430 --> 01:06:30.190
+There is one last question that  wanna,
+ask you
+
+1012
+01:06:30.190 --> 01:06:32.760
+guys because 've seen this pop up a few
+times here.
+
+1013
+01:06:32.760 --> 01:06:35.010
+o you, do you know where we are
+
+1014
+01:06:35.010 --> 01:06:37.826
+with support for the  element
+in mobile browsers?
+
+1015
+01:06:37.826 --> 01:06:38.326
+[K_O].
+
+1016
+01:06:42.330 --> 01:06:46.290
+>> Yeah, we, we have support onAndroid
+and iOS  believe.
+
+1017
+01:06:46.290 --> 01:06:47.090
+Correct me if 'm wrong.
+
+1018
+01:06:47.090 --> 01:06:50.400
+ut yeah, working working well onAndroid,
+although there, there
+
+1019
+01:06:50.400 --> 01:06:52.780
+is a kind of, there is a catch here which
+is
+
+1020
+01:06:52.780 --> 01:06:56.070
+that of course on a, on a tiny screen you
+know,
+
+1021
+01:06:56.070 --> 01:07:01.110
+there is a, a question of how you display
+text now.
+
+1022
+01:07:01.110 --> 01:07:04.980
+f you look at track running in crime on
+Android you can
+
+1023
+01:07:04.980 --> 01:07:09.880
+say it's working just as intended but text
+can be quite small.
+
+1024
+01:07:09.880 --> 01:07:15.310
+So, the way around that is to use the
+events that you
+
+1025
+01:07:15.310 --> 01:07:20.560
+can get from the track element each time a
+cue changes and then implement your own.
+
+1026
+01:07:20.560 --> 01:07:25.110
+Version of captioning so, you know, this
+is something that JW
+
+1027
+01:07:25.110 --> 01:07:30.020
+Players handled, handles and you can do
+your own thing as developers.
+
+1028
+01:07:30.020 --> 01:07:35.057
+So, to display captions in a format like
+say, you know, overlaying video in
+
+1029
+01:07:35.057 --> 01:07:39.961
+a way that suits the, suites the device
+and could be adjusted by the user.
+
+1030
+01:07:39.961 --> 01:07:40.786
+[K_O].
+
+1031
+01:07:40.786 --> 01:07:44.096
+>> Yeah, agreed.
+
+1032
+01:07:44.096 --> 01:07:47.900
+The both, both iOS and Chrome andAndroid
+
+1033
+01:07:47.900 --> 01:07:51.930
+now have really good support for the track
+elements.
+
+1034
+01:07:51.930 --> 01:07:55.680
+The decks can be small if the video plays
+inline but
+
+1035
+01:07:55.680 --> 01:07:59.390
+if you jump up to, full screen mode it's
+very useful, right?
+
+1036
+01:07:59.390 --> 01:08:03.870
+ haven't played around with, the latest
+version of nternet xplorer on
+
+1037
+01:08:03.870 --> 01:08:09.590
+iPhone yet, but that is, that should also
+have track support right now.
+
+1038
+01:08:09.590 --> 01:08:11.760
+So on, like, Windows phone
+>> Yeah.
+
+1039
+01:08:11.760 --> 01:08:13.250
+Sorry,  forgot to mention nternet
+xplorer.
+
+1040
+01:08:13.250 --> 01:08:15.110
+That's always had good track support.
+
+1041
+01:08:15.110 --> 01:08:15.490
+>> Yeah.
+
+1042
+01:08:15.490 --> 01:08:19.250
+So, just get release of [...] that
+should also work great.
+
+1043
+01:08:19.250 --> 01:08:21.824
+And with that .
+
+1044
+01:08:23.610 --> 01:08:26.210
+>> and in terms of keeping up to date with
+what,
+
+1045
+01:08:26.210 --> 01:08:31.980
+where browsers are in their supportive
+variational five elements for video.
+
+1046
+01:08:31.980 --> 01:08:34.280
+Your JW Player has a great resource
+
+1047
+01:08:34.280 --> 01:08:39.640
+at JWPlayer.com/html5 and he, he keeps
+that up.
+
+1048
+01:08:39.640 --> 01:08:42.320
+Sort of a industry to go to for, for that.
+
+1049
+01:08:43.340 --> 01:08:46.930
+With that, we wanna thank you guys
+again for your time.
+
+1050
+01:08:46.930 --> 01:08:50.890
+Thanks to, Jeroen and thanks to Sam for,
+spending their time to
+
+1051
+01:08:50.890 --> 01:08:55.150
+educate us all on HTML5 and again, we
+will, we did record this.
+
+1052
+01:08:55.150 --> 01:08:59.610
+We will be, sending an email out and
+posting this live tomorrow.
+
+1053
+01:08:59.610 --> 01:09:03.280
+And thanks again, everybody for your time.
+
+1054
+01:09:04.320 --> 01:09:05.860
+>> Thank you, and thanks for the great
+questions.
