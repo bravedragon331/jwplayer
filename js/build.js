@@ -294,9 +294,11 @@ function initJWPlayer(video_url, transcription_url) {
       var m = captions[i].text.toLowerCase().indexOf(q.toLowerCase());
       if (m > -1) {
         document.getElementById('caption' + i).innerHTML =
+          "<span class='caption-time'>" + '<i class="fa fa-play-circle-o" aria-hidden="true"></i> ' + 
+          captions[i].btext +"&nbsp&nbsp&nbsp&nbsp" + "</span><span class='caption-text'>"+
           captions[i].text.substr(0, m) + "<em>" +
           captions[i].text.substr(m, q.length) + "</em>" +
-          captions[i].text.substr(m + q.length);
+          captions[i].text.substr(m + q.length) + "</span>";
         matches.push(i);
       }
     }
@@ -323,7 +325,7 @@ function initJWPlayer(video_url, transcription_url) {
   function resetSearch() {
     if (matches.length) {
       for (var i = 0; i < captions.length; i++) {
-        document.getElementById('caption' + i).innerHTML = "[" + captions[i].btext + "]&nbsp&nbsp&nbsp&nbsp" + captions[i].text;
+        document.getElementById('caption' + i).innerHTML = "<span class='caption-time'>" + '<i class="fa fa-play-circle-o" aria-hidden="true"></i> ' + captions[i].btext + "&nbsp&nbsp&nbsp&nbsp" + "</span><span class='caption-text'>" + captions[i].text + "</span>"
       }
     }
     query = "";
