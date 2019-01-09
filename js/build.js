@@ -11,7 +11,7 @@ function initJWPlayer(video_url, transcription_url) {
   var match = document.getElementById('match');
   var svgWrapper = document.getElementById("svg-wrapper");
   var b_transcript = false;
-  var video, seekBar, volumeBar, captionButton, player, transcriptWrapper, playButton, muteButton, fullScreenButton;
+  var video, seekBar, volumeBar, captionButton, player, transcriptWrapper, playButton, muteButton, fullScreenButton, playSpeedButton;
 
   // Setup JW Player
   jwplayer("player").setup({
@@ -22,7 +22,7 @@ function initJWPlayer(video_url, transcription_url) {
     // }],
     displaytitle: false,
     width: 1140,
-    height: 790,
+    height: 740,
     controls: false
   });
 
@@ -41,6 +41,7 @@ function initJWPlayer(video_url, transcription_url) {
     playButton = document.getElementById("playPauseButton");
     muteButton = document.getElementById("mute");
     fullScreenButton = document.getElementById("full-screen");
+    playSpeedButton = document.getElementById("playSpeedButton");
 
     // Sliders
     seekBar = document.getElementById("seek-bar");
@@ -98,6 +99,15 @@ function initJWPlayer(video_url, transcription_url) {
         video.webkitRequestFullscreen(); // Chrome and Safari
       }
     });
+
+    // Event listener for play speed button
+    playSpeedButton.addEventListener("click", function () {
+      video.playbackRate = video.playbackRate + 0.5;
+      if (video.playbackRate === 2.5) {
+        video.playbackRate = 1;
+      }
+      playSpeedButton.innerHTML = video.playbackRate + 'x';
+    })
 
     // Event listener for the seek bar
     seekBar.addEventListener("change", function () {
@@ -182,7 +192,7 @@ function initJWPlayer(video_url, transcription_url) {
           if (c.text.indexOf('<br>') === 0) {
             c.text = c.text.substring(4);
           }
-          h += "<span id='caption" + i + "' class='caption'>[" + c.btext + "]&nbsp&nbsp&nbsp&nbsp" + c.text + "</span>";
+          h += "<span id='caption" + i + "' class='caption'><span class='caption-time'>" + '<i class="fa fa-play-circle-o" aria-hidden="true"></i> ' + c.btext + "&nbsp&nbsp&nbsp&nbsp" + "</span><span class='caption-text'>" + c.text + "</span></span>";
           captions.push(c);
         }
         transcript.innerHTML = h + "</p>";
