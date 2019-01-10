@@ -192,7 +192,7 @@ function initJWPlayer(video_url, transcription_url) {
           if (c.text.indexOf('<br>') === 0) {
             c.text = c.text.substring(4);
           }
-          h += "<span id='caption" + i + "' class='caption'><span class='caption-time'>" + '<i class="fa fa-play-circle-o" aria-hidden="true"></i> ' + c.btext + "&nbsp&nbsp&nbsp&nbsp" + "</span><span class='caption-text'>" + c.text + "</span></span>";
+          h += "<span id='caption" + i + "' class='caption'><span class='caption-dot'></span><span class='caption-time'>" + '<i class="fa fa-play-circle-o" aria-hidden="true"></i> ' + c.btext + "&nbsp&nbsp&nbsp&nbsp" + "</span><span class='caption-text'>" + c.text + "</span></span>";
           captions.push(c);
         }
         transcript.innerHTML = h + "</p>";
@@ -294,7 +294,7 @@ function initJWPlayer(video_url, transcription_url) {
       var m = captions[i].text.toLowerCase().indexOf(q.toLowerCase());
       if (m > -1) {
         document.getElementById('caption' + i).innerHTML =
-          "<span class='caption-time'>" + '<i class="fa fa-play-circle-o" aria-hidden="true"></i> ' + 
+          "<span class='caption-dot'></span><span class='caption-time'>" + '<i class="fa fa-play-circle-o" aria-hidden="true"></i> ' + 
           captions[i].btext +"&nbsp&nbsp&nbsp&nbsp" + "</span><span class='caption-text'>"+
           captions[i].text.substr(0, m) + "<em>" +
           captions[i].text.substr(m, q.length) + "</em>" +
@@ -325,7 +325,7 @@ function initJWPlayer(video_url, transcription_url) {
   function resetSearch() {
     if (matches.length) {
       for (var i = 0; i < captions.length; i++) {
-        document.getElementById('caption' + i).innerHTML = "<span class='caption-time'>" + '<i class="fa fa-play-circle-o" aria-hidden="true"></i> ' + captions[i].btext + "&nbsp&nbsp&nbsp&nbsp" + "</span><span class='caption-text'>" + captions[i].text + "</span>"
+        document.getElementById('caption' + i).innerHTML = "<span class='caption-dot'></span><span class='caption-time'>" + '<i class="fa fa-play-circle-o" aria-hidden="true"></i> ' + captions[i].btext + "&nbsp&nbsp&nbsp&nbsp" + "</span><span class='caption-text'>" + captions[i].text + "</span>"
       }
     }
     query = "";
@@ -386,10 +386,23 @@ function startPlay(video_url, transcription_url) {
   player = initJWPlayer(video_url, transcription_url)
 }
 
-function searchKeyword() {
-  var keyword = document.getElementById("keyword").value;
+function searchKeyword(keyword) {
+  // var keyword = document.getElementById("keyword").value;
   // document.getElementById('search').value = keyword
   // document.getElementById("search").focus();
   player.searchTranscript(keyword);
 }
 
+var show_keyword = true;
+var keywordToggleButton = document.getElementById("toggleSearch");
+keywordToggleButton.addEventListener("click", function () {
+  var keywordWrapper = document.getElementsByClassName("keyword-wrapper")[0];
+  if (show_keyword) {
+    keywordWrapper.classList.remove("hide");
+    keywordToggleButton.classList.add('active')
+  } else {
+    keywordWrapper.classList.add("hide");
+    keywordToggleButton.classList.remove('active')
+  }
+  show_keyword = !show_keyword;
+})

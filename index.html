@@ -1,73 +1,70 @@
 <html>
-  <head>
-    <link
-      rel="shortcut icon"
-      href="//developer.jwplayer.com/img/favicon.ico"
-      type="image/x-icon"
-    />
 
-    <link rel="stylesheet" href="/css/build.css" />
-    <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+<head>
+  <link rel="shortcut icon" href="//developer.jwplayer.com/img/favicon.ico" type="image/x-icon" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  </head>
+  <link rel="stylesheet" href="/css/build.css" />
+  <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto" rel="stylesheet">
 
-  <body style="background-color: black;">
-    <script src="/js/IDzF9Zmk.js"></script>
-    <div class="container">
-      <div class="player-container">
-        <div id="player"></div>
-        <div class="transcript-wrapper">
-          <div id="transcript" class="transcript"></div>
-          <div class="tool-box">
-            <select onchange="searchKeyword()" id="keyword">
-              <option value="all" selected>My Keywords</option>
-              <option value="Tim">Tim</option>
-              <option value="Diploma">Diploma</option>
-              <option value="Bachelor">Bachelor</option>
-              <option value="Master">Master</option>
-            </select>
-            <input
-              id="search"
-              type="search"
-              class="search"
-              placeholder="find words"
-            />
-          </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body style="background-color: black;">
+  <script src="/js/IDzF9Zmk.js"></script>
+  <div class="container">
+    <div class="player-container">
+      <div id="player"></div>
+      <div class="transcript-wrapper">
+        <div id="transcript" class="transcript"></div>
+        <div class="keyword-wrapper hide">
+          <ul class="listing__keywords-of-topic">
+            <li><a  onclick='searchKeyword("tim")'><span class="listing__keywords__keyword-name">tim</span><span>(5)</span></a></li>
+            <li><a  onclick='searchKeyword("tim")'><span class="listing__keywords__keyword-name">tim</span><span>(5)</span></a></li>
+            <li><a  onclick='searchKeyword("tim")'><span class="listing__keywords__keyword-name">tim</span><span>(5)</span></a></li>
+            <li><a  onclick='searchKeyword("tim")'><span class="listing__keywords__keyword-name">tim</span><span>(5)</span></a></li>
+            <li><a  onclick='searchKeyword("tim")'><span class="listing__keywords__keyword-name">tim</span><span>(5)</span></a></li>
+            <li><a  onclick='searchKeyword("tim")'><span class="listing__keywords__keyword-name">tim</span><span>(5)</span></a></li>
+            <li><a  onclick='searchKeyword("tim")'><span class="listing__keywords__keyword-name">tim</span><span>(5)</span></a></li>
+            <li><a  onclick='searchKeyword("tim")'><span class="listing__keywords__keyword-name">tim</span><span>(5)</span></a></li>
+            <li><a  onclick='searchKeyword("tim")'><span class="listing__keywords__keyword-name">tim</span><span>(5)</span></a></li>
+          </ul>
         </div>
-      </div>
-
-      <div id="control-bar">
-        <div id="controls-left">
-          <button id="playPauseButton" title="Play" class="pause"></button>
-          <button id="playSpeedButton" title="Play Speed">1x</button>
-          <button
-            id="captionButton"
-            title="Show Captioning"
-            class="active"
-          ></button>
-          <button id="full-screen" title="Full-Screen"></button>
-        </div>
-        <div id="controls-right">
-          <button id="mute" title="Mute" class="active"></button>
-          <input
-            type="range"
-            id="volume-bar"
-            min="0"
-            max="1"
-            step="0.001"
-            value="1"
-          />
-          <!-- <button id="searchButton" title="Search" class="active"></button> -->
-        </div>
-        <div id="controls-middle">
-          <input type="range" id="seek-bar" min="0" max="1" step="0.001" value="0"/>
-          <div class="svg-wrapper" id="svg-wrapper"></div>
-          <span class="end-time"></span>
-          <span class="current-time"></span>
+        <div class="tool-box">
+          <!-- <select onchange="searchKeyword()" id="keyword">
+            <option value="all" selected>My Keywords</option>
+            <option value="Tim">Tim</option>
+            <option value="Diploma">Diploma</option>
+            <option value="Bachelor">Bachelor</option>
+            <option value="Master">Master</option>
+          </select> -->
+          <button class="search" id="toggleSearch">Keyword</button>
+          <input id="search" type="search" class="search" placeholder="find words" />
         </div>
       </div>
     </div>
-    <script src="/js/build.js"></script>
-  </body>
+
+    <div id="control-bar">
+      <div id="controls-left">
+        <button id="playPauseButton" title="Play" class="pause"></button>
+        <button id="playSpeedButton" title="Play Speed">1x</button>
+        <button id="captionButton" title="Show Captioning" class="active"></button>
+        <button id="full-screen" title="Full-Screen"></button>
+      </div>
+      <div id="controls-right">
+        <button id="mute" title="Mute" class="active"></button>
+        <input type="range" id="volume-bar" min="0" max="1" step="0.001" value="1" />
+        <!-- <button id="searchButton" title="Search" class="active"></button> -->
+      </div>
+      <div id="controls-middle">
+        <input type="range" id="seek-bar" min="0" max="1" step="0.001" value="0" />
+        <div class="svg-wrapper" id="svg-wrapper"></div>
+        <span class="end-time"></span>
+        <span class="current-time"></span>
+      </div>
+    </div>
+  </div>
+  <script src="/js/build.js"></script>
+</body>
+
 </html>
