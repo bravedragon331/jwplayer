@@ -148,12 +148,12 @@
   }  
   .transcript-wrapper.right-side {
     display: inline-block;
-    max-height: 590px;
+    max-height: 640px;
     margin-bottom: 70px;
     width: 35%;
   }
   .transcript {
-    max-height: 590px;
+    max-height: 640px;
   }
   .player-container {
     padding-left: 60px;
