@@ -166,11 +166,29 @@ function initJWPlayer(video_url, transcription_url) {
         player.classList.remove("left-side");
         // transcript.classList.remove("right-side");
         transcriptWrapper.classList.remove("right-side");
+        // player.style.width = 1140;
+        // player.style.height = 740;
       }
       b_transcript = !b_transcript;
     })
 
     captionButton.click();
+
+
+    window.onresize = function(event) {      
+      // if (player.classList.contains("left-side")) {
+        player.style.height = player.offsetWidth * (740/1140);
+        transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
+        transcript.style.height = player.offsetWidth * (740/1140)-70;  
+      // }
+    };
+
+    
+    if (player.classList.contains("left-side")) {
+      player.style.height = player.offsetWidth * (740/1140);
+      transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
+      transcript.style.height = player.offsetWidth * (740/1140)-70;  
+    }
   }
 
   function convertSeconds(totalSeconds) {

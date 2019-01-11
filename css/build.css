@@ -17,7 +17,7 @@
   #player {
     margin: 20px 0px;
     width: calc(100%) !important;
-    height: 390px !important;
+    /* height: 390px !important; */
   }
 
   .sidebar {
@@ -42,7 +42,7 @@
   #player {
     margin: 20px 0px;
     width: calc(100%) !important;
-    height: 490px !important;
+    /* height: 490px !important; */
   }
 
   .sidebar {
@@ -68,7 +68,7 @@
   #player {
     margin: 20px 0px;
     width: calc(100%) !important;
-    height: 550px !important;
+    /* height: 550px !important; */
   }
 
   .sidebar {
@@ -82,7 +82,8 @@
     display: inline-block;
     max-height: 250px;
     margin-bottom: 100px;    
-    width: 960px;
+    /* width: 960px; */
+    width: calc(100%) !important;
     margin-top: 20px;
   }
   .transcript {
@@ -92,8 +93,9 @@
 
 @media (min-width: 1168px) and (max-width: 1278px) {
   #player {
-    width: 960px !important;
-    height: 600px !important;
+    /* width: 960px !important; */
+    width: calc(100%) !important;
+    /* height: 600px !important; */
   }
 
   .sidebar {
@@ -108,7 +110,8 @@
     display: inline-block;
     max-height: 300px;
     margin-bottom: 100px;
-    width: 960px;
+    /* width: 960px; */
+    width: calc(100%) !important;
   }
   .transcript {
     max-height: 300px;
@@ -117,8 +120,9 @@
 
 @media (min-width: 1278px) and (max-width: 1440px) {
   #player {
-    width: 1140px !important;
-    height: 650px !important;
+    /* width: 1140px !important; */
+    width: calc(100%) !important;
+    /* height: 650px !important; */
   }
 
   .sidebar {
@@ -133,7 +137,8 @@
     display: inline-block;
     max-height: 150px;
     margin-bottom: 100px;
-    width: 1140px;
+    /* width: 1140px; */
+    width: calc(100%) !important;
   }
   .transcript {
     max-height: 150px;
@@ -145,6 +150,7 @@
     margin-right: 50px;
     display: inline-block;
     width: 60% !important;
+    /* height: calc(width * 0.65) !important; */
   }  
   .transcript-wrapper.right-side {
     display: inline-block;
@@ -344,13 +350,13 @@ input[type=range][orient=vertical] {
     right: 50px;
   }
 }
-
-@media (min-width: 1440px) {
+*/
+@media (max-width: 1440px) {
   #control-bar {
-    left: 50px;
-    right: 50px;
+    left: 10px;
+    right: 10px;
   }
-} */
+}
 
 #controls-left {
   left: 0;
