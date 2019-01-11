@@ -11,7 +11,7 @@ function initJWPlayer(video_url, transcription_url) {
   var match = document.getElementById('match');
   var svgWrapper = document.getElementById("svg-wrapper");
   var b_transcript = false;
-  var video, seekBar, volumeBar, captionButton, player, transcriptWrapper, playButton, muteButton, fullScreenButton, playSpeedButton;
+  var video, seekBar, volumeBar, captionButton, player, transcriptWrapper, keywordWrapper, playButton, muteButton, fullScreenButton, playSpeedButton;
 
   // Setup JW Player
   jwplayer("player").setup({
@@ -39,6 +39,7 @@ function initJWPlayer(video_url, transcription_url) {
 
     // Buttons
     playButton = document.getElementById("playPauseButton");
+    nextWordButton = document.getElementById("nextWordButton");
     muteButton = document.getElementById("mute");
     fullScreenButton = document.getElementById("full-screen");
     playSpeedButton = document.getElementById("playSpeedButton");
@@ -52,6 +53,7 @@ function initJWPlayer(video_url, transcription_url) {
     player = document.getElementById('player');
 
     transcriptWrapper = document.getElementsByClassName("transcript-wrapper")[0]
+    keywordWrapper = document.getElementsByClassName("keyword-wrapper")[0]
 
     // Event listener for the play/pause button
     playButton.addEventListener("click", function () {
@@ -107,6 +109,15 @@ function initJWPlayer(video_url, transcription_url) {
         video.playbackRate = 1;
       }
       playSpeedButton.innerHTML = video.playbackRate + 'x';
+    })
+
+    nextWordButton.addEventListener("click", function () {
+      if (matches.length === 0) return;
+      if (cycle >= matches.length - 1) {
+        cycleSearch(0);
+      } else {
+        cycleSearch(cycle + 1);
+      }
     })
 
     // Event listener for the seek bar
@@ -305,7 +316,9 @@ function initJWPlayer(video_url, transcription_url) {
     displaysvg(matches);
     if (matches.length) {
       cycleSearch(0);
+      nextWordButton.classList.add('active');
     } else {
+      nextWordButton.classList.remove('active');
       resetSearch();
     }
   };
@@ -400,6 +413,7 @@ keywordToggleButton.addEventListener("click", function () {
   if (show_keyword) {
     keywordWrapper.classList.remove("hide");
     keywordToggleButton.classList.add('active')
+    keywordWrapper.style.width = document.getElementsByClassName("transcript-wrapper")[0].offsetWidth;
   } else {
     keywordWrapper.classList.add("hide");
     keywordToggleButton.classList.remove('active')

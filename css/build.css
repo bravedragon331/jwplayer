@@ -15,7 +15,8 @@
 
 @media (max-width: 762px) {
   #player {
-    width: 520px !important;
+    margin: 20px;
+    width: calc(100% - 40px) !important;
     height: 390px !important;
   }
 
@@ -29,7 +30,7 @@
     display: inline-block;
     max-height: 150px;
     margin-bottom: 100px;
-    width: 520px;
+    width: calc(100% - 40px) !important;
     margin-top: 20px;
   }
   .transcript {
@@ -39,7 +40,8 @@
 
 @media (min-width: 762px) and (max-width: 1168px) {
   #player {
-    width: 720px !important;
+    margin: 20px;
+    width: calc(100% - 40px) !important;
     height: 490px !important;
   }
 
@@ -54,7 +56,7 @@
     display: inline-block;
     max-height: 150px;
     margin-bottom: 100px;
-    width: 720px;
+    width: calc(100% - 40px) !important;
     margin-top: 20px;
   }
   .transcript {
@@ -182,6 +184,8 @@
   margin-left: 10%;
   width: 40%;
   color: #d9d9d9;
+  font-size: 14px;
+  font-family: 'Raleway', 'Montserrat', sans-serif;
 }
 
 .tool-box select {
@@ -203,7 +207,8 @@
 }
 
 .transcript::-webkit-scrollbar {
-  width: 1px;
+  width: 5px;
+  cursor: pointer;
 }
 
 .transcript::-webkit-scrollbar-track {
@@ -306,6 +311,14 @@ input[type=range][orient=vertical] {
   background: url('http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/chrome.png') 0 0;
 }
 
+
+@media (max-width: 1168px) {
+  #control-bar {
+    left: 50px;
+    right: 50px;
+  }
+}
+
 #controls-left {
   left: 0;
   margin-left: -10px;
@@ -327,7 +340,7 @@ input[type=range][orient=vertical] {
 }
 
 #controls-middle {
-  margin-left: 160px;
+  margin-left: 192px;
   margin-right: 185px;
   position: relative;
 }
@@ -366,6 +379,22 @@ input[type=range][orient=vertical] {
 
 #playPauseButton.play {
   background-position: 0px -449px;
+}
+
+
+#nextWordButton {
+  transform: rotate(180deg) scaleY(-1);
+  cursor: pointer;
+  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+  background-color: transparent;
+}
+#nextWordButton.active {
+  background-position: -0px -613px;
+  opacity: 1;
+}
+#nextWordButton {
+  background-position: -0px  -613px;
+  opacity: 0.7;
 }
 
 #playSpeedButton {
@@ -490,6 +519,8 @@ input[type=range][orient=vertical] {
   right: 0px;
   top: 35px;
   color: white;
+  font-family: 'Raleway', 'Montserrat', sans-serif;
+  font-size: 14px;
 }
 
 .current-time {
@@ -497,6 +528,8 @@ input[type=range][orient=vertical] {
   left: 0px;
   top: 35px;
   color: white;
+  font-family: 'Raleway', 'Montserrat', sans-serif;
+  font-size: 14px;
 }
 
 #mute {
@@ -671,8 +704,8 @@ input[type=range][orient=vertical] {
   width: 20%;
   vertical-align: top;
   pointer-events: none;
-  font-family: 'Roboto', sans-serif;
-  font-size: .8em;
+  font-family: 'Raleway', 'Montserrat', sans-serif;
+  font-size: 14px;
 }
 .caption-time i {
   font-size: 14px;
@@ -697,8 +730,8 @@ input[type=range][orient=vertical] {
   display: inline-block !important;
   width: 75%;
   pointer-events: none;
-  font-family: 'Roboto', sans-serif;
-  font-size: .8em;
+  font-family: 'Raleway', 'Montserrat', sans-serif;
+  font-size: 14px;
 }
 
 .listing__keywords-of-topic {
@@ -717,6 +750,8 @@ input[type=range][orient=vertical] {
   color : white;
   text-decoration:  none;
   cursor: pointer;
+  font-family: 'Raleway', 'Montserrat', sans-serif;
+  font-size: 14px;
 }
 .keyword-wrapper {  
   position: absolute;
@@ -725,6 +760,7 @@ input[type=range][orient=vertical] {
   width: inherit;
   text-align: left;
   background: #000;
+  border-top: solid 1px gray;
 }
 .keyword-wrapper.hide {  
   display: none;
@@ -738,8 +774,10 @@ input[type=range][orient=vertical] {
   color: white;
   border: solid 1px;
   border-radius: 5px;
-  font-family: serif;
+  /* font-family: serif; */
   cursor: pointer;
+  font-size: 14px;
+  font-family: 'Raleway', 'Montserrat', sans-serif;
 }
 #toggleSearch.active {
   color: #337ABB;
