@@ -332,6 +332,7 @@ function initJWPlayer(video_url, transcription_url) {
       o.getElementsByTagName("em")[0].className = "";
     }
     var c = document.getElementById('caption' + matches[i]);
+    jwplayer().seek(captions[matches[i]].begin);
     // c.getElementsByTagName("em")[0].className = "current";
     // match.innerHTML = (i + 1) + " of " + matches.length;
     transcript.scrollTop = c.offsetTop - transcript.offsetTop - 40;

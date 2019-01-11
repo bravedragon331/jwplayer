@@ -15,8 +15,8 @@
 
 @media (max-width: 762px) {
   #player {
-    margin: 20px;
-    width: calc(100% - 40px) !important;
+    margin: 20px 0px;
+    width: calc(100%) !important;
     height: 390px !important;
   }
 
@@ -30,7 +30,7 @@
     display: inline-block;
     max-height: 150px;
     margin-bottom: 100px;
-    width: calc(100% - 40px) !important;
+    width: calc(100%) !important;
     margin-top: 20px;
   }
   .transcript {
@@ -38,10 +38,10 @@
   }
 }
 
-@media (min-width: 762px) and (max-width: 1168px) {
+@media (min-width: 762px) and (max-width: 962px) {
   #player {
-    margin: 20px;
-    width: calc(100% - 40px) !important;
+    margin: 20px 0px;
+    width: calc(100%) !important;
     height: 490px !important;
   }
 
@@ -56,11 +56,37 @@
     display: inline-block;
     max-height: 150px;
     margin-bottom: 100px;
-    width: calc(100% - 40px) !important;
+    width: calc(100%) !important;
     margin-top: 20px;
   }
   .transcript {
     max-height: 150px;
+  }
+}
+
+@media (min-width: 962px) and (max-width: 1168px) {
+  #player {
+    margin: 20px 0px;
+    width: calc(100%) !important;
+    height: 550px !important;
+  }
+
+  .sidebar {
+    width: 720px !important;
+  }
+
+  #player.left-side {    
+    display: inline-block;
+  }  
+  .transcript-wrapper.right-side {
+    display: inline-block;
+    max-height: 250px;
+    margin-bottom: 100px;    
+    width: 960px;
+    margin-top: 20px;
+  }
+  .transcript {
+    max-height: 250px;
   }
 }
 
@@ -80,12 +106,12 @@
   .transcript-wrapper.right-side {
     margin-top: 20px;
     display: inline-block;
-    max-height: 150px;
+    max-height: 300px;
     margin-bottom: 100px;
     width: 960px;
   }
   .transcript {
-    max-height: 150px;
+    max-height: 300px;
   }
 }
 
@@ -123,7 +149,7 @@
   .transcript-wrapper.right-side {
     display: inline-block;
     max-height: 540px;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
     width: 35%;
   }
   .transcript {
@@ -137,7 +163,7 @@
 
 .transcript {
   padding: 0px 20px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   overflow: auto;
 }
 
