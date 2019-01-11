@@ -313,6 +313,9 @@ function initJWPlayer(video_url, transcription_url) {
         matches.push(i);
       }
     }
+    if (q === '') {
+      matches = [];
+    }
     displaysvg(matches);
     if (matches.length) {
       cycleSearch(0);
@@ -417,6 +420,7 @@ keywordToggleButton.addEventListener("click", function () {
   } else {
     keywordWrapper.classList.add("hide");
     keywordToggleButton.classList.remove('active')
+    searchKeyword('')
   }
   show_keyword = !show_keyword;
 })
