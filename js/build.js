@@ -177,11 +177,17 @@ function initJWPlayer(video_url, transcription_url) {
 
     window.onresize = function(event) {      
       // if (player.classList.contains("left-side")) {
-        player.style.height = player.offsetWidth * (740/1140);
-        transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
-        transcript.style.height = player.offsetWidth * (740/1140)-70;  
+      player.style.height = player.offsetWidth * (740/1140);
+      transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
+      transcript.style.height = player.offsetWidth * (740/1140)-70;  
       // }
     };
+
+    window.addEventListener("orientationchange", function() {
+      player.style.height = player.offsetWidth * (740/1140);
+      transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
+      transcript.style.height = player.offsetWidth * (740/1140)-70;  
+    });
 
     
     if (player.classList.contains("left-side")) {
