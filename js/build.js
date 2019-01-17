@@ -1,4 +1,4 @@
-function initJWPlayer(video_url, transcription_url) {
+function initJWPlayer(video_url_1, video_url_2, transcription_url) {
   var chapters = [];
   var captions = [];
   var caption = -1;
@@ -10,32 +10,51 @@ function initJWPlayer(video_url, transcription_url) {
   var search = document.getElementById('search');
   var match = document.getElementById('match');
   var svgWrapper = document.getElementById("svg-wrapper");
+  var keywordToggleButton = document.getElementById("toggleSearch");
+  var show_keyword = true;
   var b_transcript = false;
-  var video, seekBar, volumeBar, captionButton, player, transcriptWrapper, keywordWrapper, playButton, muteButton, fullScreenButton, playSpeedButton;
+  var video, video1, seekBar, volumeBar, captionButton, player, player2, transcriptWrapper, keywordWrapper, playButton, muteButton, fullScreenButton, playSpeedButton;
+  // Two Video Player
+  var playerContainer, secondContainer;
+  // Two Video Players Control Button
+  var sideButton, fullButton, swapButton;
+  var wait2ndPlayerInerval;
 
   // Setup JW Player
   jwplayer("player").setup({
-    file: video_url,
-    // tracks: [{
-    //   file: "assets/jwplayer/assets/chapters.vtt",
-    //   kind: "chapters"
-    // }],
+    file: video_url_1,
     displaytitle: false,
     width: 1140,
     height: 740,
     controls: false
   });
 
+  if (video_url_2) {
+    jwplayer("player2").setup({
+      file: video_url_2,
+      displaytitle: false,
+      width: 1140,
+      height: 740,
+      controls: false
+    });
+  }
+
   // Load chapters / captions
   jwplayer().on('ready', function () {
-    if (transcription_url) {
-      loadCaptions()
-    }
-    setUpControls()
+    wait2ndPlayerInerval =  setInterval(() => {
+      if (document.getElementsByClassName("jw-video")[1] || !video_url_2) {
+        if (transcription_url) {
+          loadCaptions()
+        }
+        setUpControls()
+      }
+    }, 500)    
   });
-
+  
   function setUpControls() {
+    clearInterval(wait2ndPlayerInerval);
     video = document.getElementsByClassName("jw-video")[0];
+    video1 = document.getElementsByClassName("jw-video")[1];
 
     // Buttons
     playButton = document.getElementById("playPauseButton");
@@ -51,21 +70,74 @@ function initJWPlayer(video_url, transcription_url) {
     // Caption Button
     captionButton = document.getElementById("captionButton");
     player = document.getElementById('player');
+    player2 = document.getElementById('player2');
 
     transcriptWrapper = document.getElementsByClassName("transcript-wrapper")[0]
     keywordWrapper = document.getElementsByClassName("keyword-wrapper")[0]
 
+    playerContainer = document.getElementsByClassName("player-container")[0]
+    secondContainer = document.getElementsByClassName("second-container")[0]
+
+    // Two Video Player
+    if (video_url_2) {
+      sideButton = document.getElementsByClassName("stage-sideBySideButton")[0]
+      fullButton = document.getElementsByClassName("stage-fullFrameButton")[0]
+      swapButton = document.getElementsByClassName("stage-swapButton")[0]
+
+      sideButton.addEventListener("click", function () {
+        player.classList.remove("left-side");
+        // transcript.classList.remove("right-side");
+        transcriptWrapper.classList.remove("right-side");
+        // player.style.width = 1140;
+        // player.style.height = 740;
+        if (video_url_2) {
+          playerContainer.classList.add("left-wrapper")
+          secondContainer.classList.add('right-wrapper')
+          secondContainer.style.width = (playerContainer.parentElement.offsetWidth - playerContainer.offsetWidth - 5)
+          if (window.innerWidth > 1440) {
+            secondContainer.style.width = secondContainer.offsetWidth - 60;
+          }
+          player2.style.height = player2.offsetWidth * (740/1140);
+        }
+        b_transcript = false
+        
+        sideButton.classList.add("active")
+        fullButton.classList.remove("active")
+        swapButton.classList.remove("active")
+      })
+      fullButton.addEventListener("click", function () {
+        playerContainer.classList.remove("left-wrapper")
+        secondContainer.classList.remove("right-wrapper")
+        fullButton.classList.add("active")
+        sideButton.classList.remove("active")
+        swapButton.classList.remove("active")
+      })
+      swapButton.addEventListener("click", function () {
+        if (swapButton.classList.contains("active")) {
+          swapButton.classList.remove("active")
+        } else {
+          swapButton.classList.add("active")
+          fullButton.classList.remove("active")
+          sideButton.classList.remove("active")
+        }
+      })
+    } else {
+      document.getElementById("layout-controls").style.display = 'none'
+    }
+
     // Event listener for the play/pause button
     playButton.addEventListener("click", function () {
-      if (video.paused == true) {
+      if (video.paused == true || video1.paused == true) {
         // Play the video
         video.play();
+        video1.play();
         // Update the button text to 'Pause'
         playButton.classList.add("Pause");
         playButton.classList.remove("Play");
       } else {
         // Pause the video
         video.pause();
+        video1.pause();
         // Update the button text to 'Play'
         playButton.classList.add("Play");
         playButton.classList.remove("Pause");
@@ -74,9 +146,10 @@ function initJWPlayer(video_url, transcription_url) {
 
     // Event listener for the mute button
     muteButton.addEventListener("click", function () {
-      if (video.muted == false) {
+      if (video.muted == false || video1.muted == false) {
         // Mute the video
         video.muted = true;
+        video1.muted = true;
 
         // Update the button text
         muteButton.classList.add('in-active')
@@ -84,6 +157,7 @@ function initJWPlayer(video_url, transcription_url) {
       } else {
         // Unmute the video
         video.muted = false;
+        video1.muted = false;
 
         // Update the button text
         muteButton.classList.add('active')
@@ -105,8 +179,10 @@ function initJWPlayer(video_url, transcription_url) {
     // Event listener for play speed button
     playSpeedButton.addEventListener("click", function () {
       video.playbackRate = video.playbackRate + 0.5;
+      video1.playbackRate = video.playbackRate + 0.5;
       if (video.playbackRate === 2.5) {
         video.playbackRate = 1;
+        video1.playbackRate = 1;
       }
       playSpeedButton.innerHTML = video.playbackRate + 'x';
     })
@@ -127,6 +203,7 @@ function initJWPlayer(video_url, transcription_url) {
 
       // Update the video time
       video.currentTime = time;
+      video1.currentTime = time;
     });
 
     // Update the seek bar as the video plays
@@ -143,17 +220,20 @@ function initJWPlayer(video_url, transcription_url) {
     // Pause the video when the slider handle is being dragged
     seekBar.addEventListener("mousedown", function () {
       video.pause();
+      video1.pause();
     });
 
     // Play the video when the slider handle is dropped
     seekBar.addEventListener("mouseup", function () {
       video.play();
+      video1.play();
     });
 
     // Event listener for the volume bar
     volumeBar.addEventListener("change", function () {
       // Update the video volume
       video.volume = volumeBar.value;
+      video1.volume = volumeBar.value;
     });
 
     //Event for caption button
@@ -162,31 +242,60 @@ function initJWPlayer(video_url, transcription_url) {
         player.classList.add("left-side");
         // transcript.classList.add("right-side");
         transcriptWrapper.classList.add("right-side");
+
+        // Multi Video
+        if (video_url_2) {
+          playerContainer.classList.remove("left-wrapper")
+          secondContainer.classList.remove("right-wrapper")
+          sideButton.classList.remove("active")
+          fullButton.classList.remove("active")
+          swapButton.classList.remove("active")
+        }
       } else {
         player.classList.remove("left-side");
         // transcript.classList.remove("right-side");
         transcriptWrapper.classList.remove("right-side");
-        // player.style.width = 1140;
-        // player.style.height = 740;
+        drawControls()
       }
       b_transcript = !b_transcript;
     })
 
     captionButton.click();
 
+    keywordToggleButton.addEventListener("click", function () {
+      var keywordWrapper = document.getElementsByClassName("keyword-wrapper")[0];
+      if (show_keyword) {
+        keywordWrapper.classList.remove("hide");
+        keywordToggleButton.classList.add('active')
+        keywordWrapper.style.width = document.getElementsByClassName("transcript-wrapper")[0].offsetWidth;
+      } else {
+        keywordWrapper.classList.add("hide");
+        keywordToggleButton.classList.remove('active')
+        searchKeyword('')
+      }
+      show_keyword = !show_keyword;
+    })
 
-    window.onresize = function(event) {      
-      // if (player.classList.contains("left-side")) {
+
+    var drawControls = function () {
       player.style.height = player.offsetWidth * (740/1140);
       transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
       transcript.style.height = player.offsetWidth * (740/1140)-70;  
-      // }
+      if (video_url_2) {
+        secondContainer.style.width = (playerContainer.parentElement.offsetWidth - playerContainer.offsetWidth - 5)
+        if (window.innerWidth > 1440) {
+          secondContainer.style.width = secondContainer.offsetWidth - 60;
+        }
+        player2.style.height = player2.offsetWidth * (740/1140);
+      }
+    }
+  
+    window.onresize = function(event) {      
+      drawControls()
     };
 
     window.addEventListener("orientationchange", function() {
-      player.style.height = player.offsetWidth * (740/1140);
-      transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
-      transcript.style.height = player.offsetWidth * (740/1140)-70;  
+      drawControls()
     });
 
     
@@ -260,7 +369,7 @@ function initJWPlayer(video_url, transcription_url) {
       r += Number(a[a.length - 3]) * 3600;
     }
     return r;
-  };
+  };  
 
   // Highlight current caption and chapter
   jwplayer().on('time', function (e) {
@@ -419,13 +528,9 @@ function initJWPlayer(video_url, transcription_url) {
 
 let player;
 
-let video_url = 'https://s3.amazonaws.com/video-hive/1/679312ad-142e-4315-5de4-752dc8457792.mp4'
+let video_url_1 = 'https://s3.amazonaws.com/video-hive/1/679312ad-142e-4315-5de4-752dc8457792.mp4'
+let video_url_2 = 'https://s3.amazonaws.com/video-hive/1/679312ad-142e-4315-5de4-752dc8457792.mp4'
 let transcription_url = 'https://s3.amazonaws.com/video-hive/caption/df3b99cab0a14a7b9402501f17df1537.vtt'
-startPlay(video_url, transcription_url);
-
-function startPlay(video_url, transcription_url) {
-  player = initJWPlayer(video_url, transcription_url)
-}
 
 function searchKeyword(keyword) {
   // var keyword = document.getElementById("keyword").value;
@@ -434,18 +539,9 @@ function searchKeyword(keyword) {
   player.searchTranscript(keyword);
 }
 
-var show_keyword = true;
-var keywordToggleButton = document.getElementById("toggleSearch");
-keywordToggleButton.addEventListener("click", function () {
-  var keywordWrapper = document.getElementsByClassName("keyword-wrapper")[0];
-  if (show_keyword) {
-    keywordWrapper.classList.remove("hide");
-    keywordToggleButton.classList.add('active')
-    keywordWrapper.style.width = document.getElementsByClassName("transcript-wrapper")[0].offsetWidth;
-  } else {
-    keywordWrapper.classList.add("hide");
-    keywordToggleButton.classList.remove('active')
-    searchKeyword('')
-  }
-  show_keyword = !show_keyword;
-})
+
+function startPlay(video_url_1, video_url_2, transcription_url) {
+  player = initJWPlayer(video_url_1, video_url_2, transcription_url)
+}
+startPlay(video_url_1, video_url_2, transcription_url);
+// startPlay(video_url_1, null, transcription_url);

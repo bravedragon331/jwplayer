@@ -821,3 +821,61 @@ input[type=range][orient=vertical] {
 #toggleSearch.active {
   color: #337ABB;
 }
+
+.player-container.left-wrapper {
+  width: 60% !important;
+  display: inline-block;
+  left: 10px;
+}
+.left-wrapper > #player {
+  width: calc(100% - 20px) !important;
+  margin: auto;
+}
+
+.second-container {
+  display: none;
+}
+.second-container.right-wrapper {
+  /* width: 30% !important; */
+  display: inline-block;  
+}
+#player2 {
+  width: calc(100% - 20px)!important;
+  margin:auto;
+}
+
+#layout-controls button {
+  width: 36px;
+  height: 36px;
+  display: block;
+  border-width: 0;
+  padding: 0;
+  background-color: black;
+}
+.stage-sideBySideButton {
+  cursor: pointer;
+  background-position: 0px -577px;
+  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+}
+.stage-sideBySideButton.active {
+  background-position: -144px -577px;
+}
+.stage-fullFrameButton {
+  cursor: pointer;
+  background-position: 0px -645px;
+  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+}
+.stage-fullFrameButton.active {
+  background-position: -144px -645px;
+}
+.stage-swapButton {
+  cursor: pointer;
+  background-position: 0px -224px;
+  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+}
+#layout-controls {
+  position: absolute;
+  top: 50px;
+  right: 8px;
+  width: 36px;
+}
