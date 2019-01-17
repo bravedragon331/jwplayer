@@ -113,13 +113,15 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
         swapButton.classList.remove("active")
       })
       swapButton.addEventListener("click", function () {
-        if (swapButton.classList.contains("active")) {
-          swapButton.classList.remove("active")
-        } else {
-          swapButton.classList.add("active")
-          fullButton.classList.remove("active")
-          sideButton.classList.remove("active")
-        }
+        swapButton.classList.add("active")
+        fullButton.classList.remove("active")
+        sideButton.classList.remove("active")
+        let video_parent = video.parentElement;
+        let video1_parent = video1.parentElement;
+        video_parent.appendChild(video1);
+        video1_parent.appendChild(video);
+        video.play();
+        video1.play();
       })
     } else {
       document.getElementById("layout-controls").style.display = 'none'
@@ -529,7 +531,7 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
 let player;
 
 let video_url_1 = 'https://s3.amazonaws.com/video-hive/1/679312ad-142e-4315-5de4-752dc8457792.mp4'
-let video_url_2 = 'https://s3.amazonaws.com/video-hive/1/679312ad-142e-4315-5de4-752dc8457792.mp4'
+let video_url_2 = 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4'
 let transcription_url = 'https://s3.amazonaws.com/video-hive/caption/df3b99cab0a14a7b9402501f17df1537.vtt'
 
 function searchKeyword(keyword) {
