@@ -198,11 +198,25 @@
 
 .transcript-wrapper {
   display: none;
-  /* overflow: auto; */
 }
 
-.tool-box {
-  /* padding: 0px 20px; */
+
+.transcript-wrapper-2 {
+  height: 150px;
+  margin: 50px 50px 0px;
+}
+
+@media (max-width: 1440px) {
+  .transcript-wrapper-2 {
+    margin: 50px 10px 0px;
+  }
+}
+
+.transcript-wrapper-2 #transcript {
+  height: 150px !important;
+}
+.transcript-wrapper-2 .keyword-wrapper {
+  width: calc(100% - 100px) !important;
 }
 
 #search {

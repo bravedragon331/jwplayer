@@ -14,6 +14,7 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
   var show_keyword = true;
   var b_transcript = false;
   var video, video1, seekBar, volumeBar, captionButton, player, player2, transcriptWrapper, keywordWrapper, playButton, muteButton, fullScreenButton, playSpeedButton;
+  var transcriptWrapper2; // This is for multi videos
   // Two Video Player
   var playerContainer, secondContainer;
   // Two Video Players Control Button
@@ -77,6 +78,7 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
 
     playerContainer = document.getElementsByClassName("player-container")[0]
     secondContainer = document.getElementsByClassName("second-container")[0]
+    transcriptWrapper2 = document.getElementsByClassName("transcript-wrapper-2")[0]
 
     // Two Video Player
     if (video_url_2) {
@@ -242,21 +244,39 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
     captionButton.addEventListener("click", function () {
       if (!b_transcript) {
         player.classList.add("left-side");
-        // transcript.classList.add("right-side");
+        
+        // This is for two video players
+        while (transcriptWrapper2.childNodes.length > 0) {
+          transcriptWrapper.appendChild(transcriptWrapper2.childNodes[0]);
+        }
+
         transcriptWrapper.classList.add("right-side");
 
         // Multi Video
         if (video_url_2) {
-          playerContainer.classList.remove("left-wrapper")
-          secondContainer.classList.remove("right-wrapper")
+          // playerContainer.classList.remove("left-wrapper")
+          // secondContainer.classList.remove("right-wrapper")
           sideButton.classList.remove("active")
           fullButton.classList.remove("active")
           swapButton.classList.remove("active")
+
+          // Move Transcription
+          if (playerContainer.classList.contains("left-wrapper")) {
+            while (transcriptWrapper.childNodes.length > 0) {
+              transcriptWrapper2.appendChild(transcriptWrapper.childNodes[0]);
+            }
+            transcriptWrapper.classList.remove("right-side");
+          }
         }
       } else {
         player.classList.remove("left-side");
-        // transcript.classList.remove("right-side");
         transcriptWrapper.classList.remove("right-side");
+
+        // This is for two video players
+        while (transcriptWrapper2.childNodes.length > 0) {
+          transcriptWrapper.appendChild(transcriptWrapper2.childNodes[0]);
+        }
+
         drawControls()
       }
       b_transcript = !b_transcript;
