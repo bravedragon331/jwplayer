@@ -282,11 +282,15 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
       b_transcript = !b_transcript;
     })
 
-    if (video_url_2) { 
-      sideButton.click()
+    if (video_url_2) {
+      setTimeout(function () {
+        sideButton.click()
+      }, 500)
+      
       setTimeout(function () {
         captionButton.click()
-      }, 500)
+        drawControls()
+      }, 1000)
     } else {
       captionButton.click()
     }   
