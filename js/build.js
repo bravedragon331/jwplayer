@@ -285,12 +285,12 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
     if (video_url_2) {
       setTimeout(function () {
         sideButton.click()
-      }, 500)
+      }, 100)
       
       setTimeout(function () {
         captionButton.click()
         drawControls()
-      }, 1000)
+      }, 200)
     } else {
       captionButton.click()
     }   
@@ -310,7 +310,8 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
     })
 
 
-    var drawControls = function () {
+    var drawControls = function () {      
+      document.getElementsByClassName("all-container")[0].style.opacity = 1; // This is for initial load
       player.style.height = player.offsetWidth * (740/1140);
       transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
       transcript.style.height = player.offsetWidth * (740/1140)-70;  
@@ -578,3 +579,4 @@ function startPlay(video_url_1, video_url_2, transcription_url) {
 }
 startPlay(video_url_1, video_url_2, transcription_url);
 // startPlay(video_url_1, null, transcription_url);
+document.getElementsByClassName("all-container")[0].style.opacity = 0;
