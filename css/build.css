@@ -423,7 +423,7 @@ input[type=range][orient=vertical] {
 
 #playPauseButton {
   cursor: pointer;
-  background: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png") 0 -449px;
+  background: url("assets/buttons.png") 0 -449px;
 }
 
 #playPauseButton.pause {
@@ -438,7 +438,7 @@ input[type=range][orient=vertical] {
 #nextWordButton {
   transform: rotate(180deg) scaleY(-1);
   cursor: pointer;
-  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+  background-image: url("assets/buttons.png");
   background-color: transparent;
 }
 #nextWordButton.active {
@@ -452,7 +452,7 @@ input[type=range][orient=vertical] {
 
 #playSpeedButton {
   cursor: pointer;
-  background: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+  background: url("assets/buttons.png");
   width: 44px !important;
   height: 32px;
   padding: 11px 14px;
@@ -462,7 +462,7 @@ input[type=range][orient=vertical] {
 
 #captionButton {
   cursor: default;
-  background: url('http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png');
+  background: url('assets/buttons.png');
   height: 60px;
 }
 
@@ -477,7 +477,7 @@ input[type=range][orient=vertical] {
 
 #full-screen {
   cursor: pointer;
-  background: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png") 0 -743px;
+  background: url("assets/buttons.png") 0 -743px;
 }
 
 #seek-bar {
@@ -587,7 +587,7 @@ input[type=range][orient=vertical] {
 
 #mute {
   cursor: pointer;
-  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+  background-image: url("assets/buttons.png");
   background-color: transparent;
   margin-right: auto;
 }
@@ -603,7 +603,7 @@ input[type=range][orient=vertical] {
 #searchButton {
   float: right !important;
   cursor: pointer;
-  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+  background-image: url("assets/buttons.png");
   background-color: transparent;
   margin-right: auto;
   background-position: 0px -710px;
@@ -869,7 +869,7 @@ input[type=range][orient=vertical] {
 .stage-sideBySideButton {
   cursor: pointer;
   background-position: 0px -577px;
-  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+  background-image: url("assets/buttons.png");
 }
 .stage-sideBySideButton.active {
   background-position: -144px -577px;
@@ -877,7 +877,7 @@ input[type=range][orient=vertical] {
 .stage-fullFrameButton {
   cursor: pointer;
   background-position: 0px -645px;
-  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+  background-image: url("assets/buttons.png");
 }
 .stage-fullFrameButton.active {
   background-position: -144px -645px;
@@ -885,7 +885,7 @@ input[type=range][orient=vertical] {
 .stage-swapButton {
   cursor: pointer;
   background-position: 0px -224px;
-  background-image: url("http://webcast.jhu.edu/Mediasite/Play/Javascript/Players/NewStandardPlayer/buttons.png");
+  background-image: url("assets/buttons.png");
 }
 #layout-controls {
   position: absolute;

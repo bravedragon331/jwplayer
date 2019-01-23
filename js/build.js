@@ -282,7 +282,14 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
       b_transcript = !b_transcript;
     })
 
-    captionButton.click();
+    if (video_url_2) { 
+      sideButton.click()
+      setTimeout(function () {
+        captionButton.click()
+      }, 500)
+    } else {
+      captionButton.click()
+    }   
 
     keywordToggleButton.addEventListener("click", function () {
       var keywordWrapper = document.getElementsByClassName("keyword-wrapper")[0];
