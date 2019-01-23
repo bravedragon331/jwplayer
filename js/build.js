@@ -549,6 +549,19 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
         if (i === $(this).data('index')) {
           // console.log(captions[i]);
           video.currentTime = captions[i].begin;
+          if (video1) {
+            video1.currentTime = captions[i].begin;
+          }
+          if (video.paused == true) {
+            // Play the video
+            video.play();
+            if (video1) {
+              video1.play();
+            }            
+            // Update the button text to 'Pause'
+            playButton.classList.add("Pause");
+            playButton.classList.remove("Play");
+          }
         }
       }
     })
