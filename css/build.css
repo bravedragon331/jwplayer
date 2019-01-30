@@ -141,7 +141,7 @@
     width: calc(100%) !important;
   }
   .transcript {
-    max-height: 350px;
+    /* max-height: 350px; */
   }
 }
 
