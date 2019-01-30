@@ -213,7 +213,7 @@
 }
 
 .transcript-wrapper-2 #transcript {
-  height: 350px !important;
+  height: 750px !important;
 }
 .transcript-wrapper-2 .keyword-wrapper {
   width: calc(100% - 100px) !important;
@@ -282,8 +282,14 @@
   color: #fff;
 }
 .mob span {
-  font-size: 20px !important;
+  font-size: 25px !important;
   padding: 5px 2px !important;
+}
+.mob .caption-dot {
+  padding: 2px !important;
+}
+.mob #transcript {
+  margin-top: 80px;
 }
 
 .transcript span.current {
