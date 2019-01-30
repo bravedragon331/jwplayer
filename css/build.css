@@ -80,7 +80,7 @@
   }  
   .transcript-wrapper.right-side {
     display: inline-block;
-    max-height: 250px;
+    /* max-height: 250px; */
     margin-bottom: 100px;    
     /* width: 960px; */
     width: calc(100%) !important;
