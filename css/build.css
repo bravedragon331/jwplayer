@@ -213,7 +213,7 @@
 }
 
 .transcript-wrapper-2 #transcript {
-  height: 150px !important;
+  height: 350px !important;
 }
 .transcript-wrapper-2 .keyword-wrapper {
   width: calc(100% - 100px) !important;
@@ -281,7 +281,11 @@
   cursor: pointer;
   color: #fff;
 }
-
+@media (max-width: 1024px) {
+  .transcript span {
+    font-size: 20px;
+  }
+}
 .transcript span.current {
   background: #00f096;
   color: #000;
