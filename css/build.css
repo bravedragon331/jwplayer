@@ -34,7 +34,7 @@
     margin-top: 20px;
   }
   .transcript {
-    max-height: 150px;
+    /* max-height: 150px; */
   }
 }
 
@@ -60,7 +60,7 @@
     margin-top: 20px;
   }
   .transcript {
-    max-height: 150px;
+    /* max-height: 150px; */
   }
 }
 
@@ -87,7 +87,7 @@
     margin-top: 20px;
   }
   .transcript {
-    max-height: 250px;
+    /* max-height: 250px; */
   }
 }
 
@@ -141,7 +141,7 @@
     width: calc(100%) !important;
   }
   .transcript {
-    max-height: 150px;
+    max-height: 350px;
   }
 }
 
