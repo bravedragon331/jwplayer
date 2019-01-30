@@ -332,7 +332,7 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
       drawControls()
     });
 
-    
+    drawControls()
     if (player.classList.contains("left-side")) {
       player.style.height = player.offsetWidth * (740/1140);
       transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
