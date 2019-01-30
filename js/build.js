@@ -593,3 +593,24 @@ function startPlay(video_url_1, video_url_2, transcription_url) {
 startPlay(video_url_1, video_url_2, transcription_url);
 // startPlay(video_url_1, null, transcription_url);
 document.getElementsByClassName("all-container")[0].style.opacity = 0;
+
+
+function detectmob() { 
+  if( navigator.userAgent.match(/Android/i)
+  || navigator.userAgent.match(/webOS/i)
+  || navigator.userAgent.match(/iPhone/i)
+  || navigator.userAgent.match(/iPad/i)
+  || navigator.userAgent.match(/iPod/i)
+  || navigator.userAgent.match(/BlackBerry/i)
+  || navigator.userAgent.match(/Windows Phone/i)
+  ){
+     return true;
+   }
+  else {
+     return false;
+   }
+ }
+ 
+ if (detectmob()) {
+   document.getElementsByClassName("all-container")[0].classList.add("mob");
+ }
