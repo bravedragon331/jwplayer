@@ -13,7 +13,7 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
   var keywordToggleButton = document.getElementById("toggleSearch");
   var show_keyword = true;
   var b_transcript = false;
-  var video, video1, seekBar, volumeBar, captionButton, player, player2, transcriptWrapper, keywordWrapper, playButton, muteButton, fullScreenButton, playSpeedButton;
+  var video, video1, seekBar, volumeBar, captionButton, player, player2, transcriptWrapper, keywordWrapper, playButton, muteButton, fullScreenButton, playSpeedButton, swapControlButton;
   var transcriptWrapper2; // This is for multi videos
   // Two Video Player
   var playerContainer, secondContainer;
@@ -62,6 +62,7 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
     nextWordButton = document.getElementById("nextWordButton");
     muteButton = document.getElementById("mute");
     fullScreenButton = document.getElementById("full-screen");
+    swapControlButton = document.getElementById("swap-control");
     playSpeedButton = document.getElementById("playSpeedButton");
 
     // Sliders
@@ -100,12 +101,16 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
             secondContainer.style.width = secondContainer.offsetWidth - 60;
           }
           player2.style.height = player2.offsetWidth * (740/1140);
+
+          //
+          document.getElementsByClassName("all-container")[0].classList.add("two-video-container");
         }
         b_transcript = false
         
         sideButton.classList.add("active")
         fullButton.classList.remove("active")
         swapButton.classList.remove("active")
+        drawControls()
       })
       fullButton.addEventListener("click", function () {
         playerContainer.classList.remove("left-wrapper")
@@ -113,6 +118,10 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
         fullButton.classList.add("active")
         sideButton.classList.remove("active")
         swapButton.classList.remove("active")
+
+        //
+        document.getElementsByClassName("all-container")[0].classList.remove("two-video-container");
+        drawControls()
       })
       swapButton.addEventListener("click", function () {
         swapButton.classList.add("active")
@@ -125,23 +134,24 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
         video.play();
         video1.play();
       })
-    } else {
-      document.getElementById("layout-controls").style.display = 'none'
     }
-
     // Event listener for the play/pause button
     playButton.addEventListener("click", function () {
-      if (video.paused == true || video1.paused == true) {
+      if (video.paused == true) {
         // Play the video
         video.play();
-        video1.play();
+        if (video1) {
+          video1.play();
+        }
         // Update the button text to 'Pause'
         playButton.classList.add("Pause");
         playButton.classList.remove("Play");
       } else {
         // Pause the video
         video.pause();
-        video1.pause();
+        if (video1) {
+          video1.pause();
+        }
         // Update the button text to 'Play'
         playButton.classList.add("Play");
         playButton.classList.remove("Pause");
@@ -180,14 +190,31 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
       }
     });
 
+    // Event lister for swap control button on mobile
+    swapControlButton.addEventListener("click", function () {
+      let controlBar = document.getElementById("control-bar")
+      if (controlBar.classList.contains("mob-1")) {
+        controlBar.classList.remove("mob-1")
+        controlBar.classList.add("mob-2")
+      } else if (controlBar.classList.contains("mob-2")) {
+        controlBar.classList.remove("mob-2")
+        controlBar.classList.add("mob-1")
+      }
+    })
+
     // Event listener for play speed button
     playSpeedButton.addEventListener("click", function () {
       video.playbackRate = video.playbackRate + 0.5;
-      video1.playbackRate = video.playbackRate + 0.5;
       if (video.playbackRate === 2.5) {
-        video.playbackRate = 1;
-        video1.playbackRate = 1;
+        video.playbackRate = 1;        
       }
+      if (video1) {
+        video1.playbackRate = video.playbackRate + 0.5;
+        if (video1.playbackRate === 2.5) {
+          video1.playbackRate = 1;        
+        }
+      }
+      
       playSpeedButton.innerHTML = video.playbackRate + 'x';
     })
 
@@ -254,8 +281,6 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
 
         // Multi Video
         if (video_url_2) {
-          // playerContainer.classList.remove("left-wrapper")
-          // secondContainer.classList.remove("right-wrapper")
           sideButton.classList.remove("active")
           fullButton.classList.remove("active")
           swapButton.classList.remove("active")
@@ -267,11 +292,15 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
             }
             transcriptWrapper.classList.remove("right-side");
           }
+        } else if (window.innerWidth <= 1024) {
+          while (transcriptWrapper.childNodes.length > 0) {
+            transcriptWrapper2.appendChild(transcriptWrapper.childNodes[0]);
+          }
+          transcriptWrapper.classList.remove("right-side");
         }
       } else {
         player.classList.remove("left-side");
         transcriptWrapper.classList.remove("right-side");
-
         // This is for two video players
         while (transcriptWrapper2.childNodes.length > 0) {
           transcriptWrapper.appendChild(transcriptWrapper2.childNodes[0]);
@@ -281,19 +310,6 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
       }
       b_transcript = !b_transcript;
     })
-
-    if (video_url_2) {
-      setTimeout(function () {
-        sideButton.click()
-      }, 100)
-      
-      setTimeout(function () {
-        captionButton.click()
-        drawControls()
-      }, 200)
-    } else {
-      captionButton.click()
-    }   
 
     keywordToggleButton.addEventListener("click", function () {
       var keywordWrapper = document.getElementsByClassName("keyword-wrapper")[0];
@@ -310,17 +326,27 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
     })
 
 
-    var drawControls = function () {      
+    var drawControls = function () {
       document.getElementsByClassName("all-container")[0].style.opacity = 1; // This is for initial load
       player.style.height = player.offsetWidth * (740/1140);
       transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
-      transcript.style.height = player.offsetWidth * (740/1140)-70;  
+      // transcript.style.height = player.offsetWidth * (740/1140)-70;  
       if (video_url_2) {
         secondContainer.style.width = (playerContainer.parentElement.offsetWidth - playerContainer.offsetWidth - 5)
         if (window.innerWidth > 1440) {
           secondContainer.style.width = secondContainer.offsetWidth - 60;
         }
         player2.style.height = player2.offsetWidth * (740/1140);
+      }
+      if (window.innerWidth < 762) {
+        let controlBar = document.getElementById("control-bar")
+        if ((!controlBar.classList.contains("mob-1")) && (!controlBar.classList.contains("mob-2"))) {
+          controlBar.classList.add("mob-1")
+        }
+      } else {
+        let controlBar = document.getElementById("control-bar")
+        controlBar.classList.remove("mob-1")
+        controlBar.classList.remove("mob-2")
       }
     }
   
@@ -333,11 +359,19 @@ function initJWPlayer(video_url_1, video_url_2, transcription_url) {
     });
 
     drawControls()
-    if (player.classList.contains("left-side")) {
-      player.style.height = player.offsetWidth * (740/1140);
-      transcriptWrapper.style.height = player.offsetWidth * (740/1140)-70;
-      transcript.style.height = player.offsetWidth * (740/1140)-70;  
-    }
+
+    if (video_url_2) {
+      setTimeout(function () {
+        sideButton.click()
+      }, 100)
+      
+      setTimeout(function () {
+        captionButton.click()
+        drawControls()
+      }, 200)
+    } else {
+      captionButton.click()
+    }   
   }
 
   function convertSeconds(totalSeconds) {
@@ -589,28 +623,31 @@ function searchKeyword(keyword) {
 
 function startPlay(video_url_1, video_url_2, transcription_url) {
   player = initJWPlayer(video_url_1, video_url_2, transcription_url)
+  if (video_url_2) {
+    document.getElementsByClassName("all-container")[0].classList.add("all-container-2")
+  }  
 }
 startPlay(video_url_1, video_url_2, transcription_url);
 // startPlay(video_url_1, null, transcription_url);
 document.getElementsByClassName("all-container")[0].style.opacity = 0;
 
 
-function detectmob() { 
-  if( navigator.userAgent.match(/Android/i)
-  || navigator.userAgent.match(/webOS/i)
-  || navigator.userAgent.match(/iPhone/i)
-  || navigator.userAgent.match(/iPad/i)
-  || navigator.userAgent.match(/iPod/i)
-  || navigator.userAgent.match(/BlackBerry/i)
-  || navigator.userAgent.match(/Windows Phone/i)
-  ){
-     return true;
-   }
-  else {
-     return false;
-   }
- }
+// function detectmob() { 
+//   if( navigator.userAgent.match(/Android/i)
+//   || navigator.userAgent.match(/webOS/i)
+//   || navigator.userAgent.match(/iPhone/i)
+//   || navigator.userAgent.match(/iPad/i)
+//   || navigator.userAgent.match(/iPod/i)
+//   || navigator.userAgent.match(/BlackBerry/i)
+//   || navigator.userAgent.match(/Windows Phone/i)
+//   ){
+//      return true;
+//    }
+//   else {
+//      return false;
+//    }
+//  }
  
- if (detectmob()) {
-   document.getElementsByClassName("all-container")[0].classList.add("mob");
- }
+//  if (detectmob()) {
+//    document.getElementsByClassName("all-container")[0].classList.add("mob");
+//  }
